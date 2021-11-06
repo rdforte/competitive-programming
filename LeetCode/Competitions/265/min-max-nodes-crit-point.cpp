@@ -19,7 +19,7 @@ public:
     std::vector<int> nodesBetweenCriticalPoints(Node *head)
     {
 
-        for (int i = 1; head != nullptr; i++)
+        while (head != nullptr)
         {
             std::cout << head->val << " ";
             head = head->next;
