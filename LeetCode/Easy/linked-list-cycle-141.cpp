@@ -59,6 +59,35 @@ public:
         }
         return false;
     }
+
+    // FLOYD's CYCLE ALGORITHM
+    /**
+     * Imagine two runners running on a track at different speed. What happens when the track is actually a circle?
+     * The fast runner will eventually catch up to the slow runner
+     *
+     * space complexity = O(1) we only use two nodes
+     * time complexity is O(n) if not cycle then we only execute n pointers otherwise
+     * the fast pointer will have to do some extra iterations to catch up and lop the slow pointer (k) so time is
+     * n + k so we can just say O(n)
+     */
+    bool hasCycle3(ListNode *head)
+    {
+        if (head == nullptr)
+            return false;
+
+        ListNode *slow = head;
+        ListNode *fast = head->next;
+
+        while (slow != fast)
+        {
+            if (fast == nullptr || fast->next == nullptr)
+                return false;
+
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        return true;
+    }
 };
 
 int main()
