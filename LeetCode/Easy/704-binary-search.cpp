@@ -7,47 +7,34 @@ class Solution
 public:
   int search(std::vector<int> &nums, int target)
   {
-    std::cout << "new search -----------\n";
+    return recursiveSearch(nums, target, 0, nums.size() - 1);
+  }
 
-    for (int i : nums)
-    {
-      std::cout << i;
-    }
+private:
+  // Using recursion I was able to move through this like a b-tree halving the search every time.
+  // Runtime O(log n)
+  // Spacetime O(1) since all I have to keep track of is the index's for the upper/lower bounds.
+  int recursiveSearch(std::vector<int> &nums, int target, int lower, int upper)
+  {
 
-    if (nums.size() == 1)
+    // if lower is same as upper then it is just 1 number remaining
+    if (lower == upper)
     {
-      if (nums[0] == target)
-        return target;
+      if (nums[lower] == target)
+        return lower;
       else
         return -1;
     }
 
-    std::vector<int> left(nums.begin(), nums.begin() + nums.size() / 2);
-    std::vector<int> right(nums.begin() + nums.size() / 2, nums.end());
+    int middle = ((upper - lower) / 2) + lower;
 
-    // for (int i : left)
-    // {
-    //   std::cout << i;
-    // }
-
-    // std::cout << "\n";
-
-    // for (int i : right)
-    // {
-    //   std::cout << i;
-    // }
-    // std::cout << "\n";
-
-    std::cout
-        << "---------------------------------\n";
-
-    if (target >= right[0] & target <= right[right.size() - 1])
+    if (target <= nums[middle] & target >= nums[lower])
     {
-      return search(right, target);
+      return recursiveSearch(nums, target, lower, middle);
     }
-    else if (target <= left[left.size() - 1] & target >= left[0])
+    else if (target >= nums[middle + 1] & target <= nums[upper])
     {
-      return search(left, target);
+      return recursiveSearch(nums, target, middle + 1, upper);
     }
 
     return -1;
