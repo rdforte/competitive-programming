@@ -7,6 +7,7 @@ public:
   // Recursive approach
   // Spacetime O(1) we just have to keep track of the middle index
   // Runtime O(log.n) we halve the array every single time.
+  // This could be done with a while loop
   int peakIndexInMountainArray(std::vector<int> &arr)
   {
     return peakRecursion(arr, 0, arr.size() - 1);
