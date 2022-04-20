@@ -38,6 +38,7 @@ void depthFirstPrintRecursive(unordered_map<string, vector<string>> graph, strin
 
 int main()
 {
+  // Adjacency list
   unordered_map<string, vector<string>> graph{
       {"a", {"c", "b"}},
       {"b", {"d"}},
