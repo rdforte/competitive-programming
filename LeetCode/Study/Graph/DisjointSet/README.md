@@ -50,20 +50,24 @@ void unionSet(int x, int y) {
 ```
 __The union function – Optimized by union by rank:__
 ```
-void unionSet(int x, int y) {
+  void unionSet(int x, int y)
+  {
     int rootX = find(x);
     int rootY = find(y);
-    if (rootX != rootY) {
-        if (rank[rootX] > rank[rootY]) {
-            root[rootY] = rootX;
-        } else if (rank[rootX] < rank[rootY]) {
-            root[rootX] = rootY;
-        } else {
-            root[rootY] = rootX;
-            rank[rootX] += 1;
-        }
+    if (rootX != rootY)
+    {
+      if (rank[rootX] >= rank[rootY])
+      {
+        root[rootY] = rootX;
+        rank[rootX] += rank[rootY];
+      }
+      else
+      {
+        root[rootX] = rootY;
+        rank[rootY] += rank[rootX];
+      }
     }
-}
+  }
 ```
 
 ## connected function of the “disjoint set”
@@ -78,3 +82,55 @@ bool connected(int x, int y) {
 The code for the disjoint set is highly modularized. You might want to become familiar with the implementation. __I would highly recommend that you understand and memorize the implementation of “disjoint set with path compression and union by rank”.__
 
 Finally, we strongly encourage you to solve the exercise problems using the abovementioned implementation of the “disjoint set” data structure. Some of these problems can be solved using other data structures and algorithms, but we highly recommend that you practice solving them using the “disjoint set” data structure.
+
+## Optimized Union Find
+```
+class UnionFind
+{
+private:
+  vector<int> root;
+  vector<int> rank;
+
+public:
+  // Initialize the array root and rank
+  // Each vertex is representative of itself with rank 1
+  UnionFind(int sz) : root(sz), rank(sz)
+  {
+    for (int i = 0; i < sz; i++)
+    {
+      root[i] = i;
+      rank[i] = 1;
+    }
+  }
+
+  // Get the root of a vertex
+  int find(int x)
+  {
+    if (x == root[x])
+    {
+      return x;
+    }
+    return root[x] = find(root[x]);
+  }
+
+  // Perform the union of two components
+  void unionSet(int x, int y)
+  {
+    int rootX = find(x);
+    int rootY = find(y);
+    if (rootX != rootY)
+    {
+      if (rank[rootX] >= rank[rootY])
+      {
+        root[rootY] = rootX;
+        rank[rootX] += rank[rootY];
+      }
+      else
+      {
+        root[rootX] = rootY;
+        rank[rootY] += rank[rootX];
+      }
+    }
+  }
+};
+```
