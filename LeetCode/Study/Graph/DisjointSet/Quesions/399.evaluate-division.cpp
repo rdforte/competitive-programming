@@ -47,8 +47,8 @@ public:
 
   void unionNodes(string a, string b, double result)
   {
-    string rootA = roots[a]->parent;
-    string rootB = roots[b]->parent;
+    string rootA = findRoot(a);
+    string rootB = findRoot(b);
 
     if (rootA != rootB)
     {
@@ -82,7 +82,13 @@ public:
 
   bool isConnected(string a, string b)
   {
-    return findRoot(a) == findRoot(b);
+    if (roots.find(a) != roots.end() &&
+        roots.find(b) != roots.end())
+    {
+      return findRoot(a) == findRoot(b);
+    }
+
+    return false;
   }
 
   unordered_map<string, Node *> getRoots()
@@ -118,7 +124,8 @@ public:
     vector<double> results{};
     for (auto q : queries)
     {
-      if (uf.getRoots().find(q[0]) != uf.getRoots().end() && uf.getRoots().find(q[1]) != uf.getRoots().end())
+      bool isConnected = uf.isConnected(q[0], q[1]);
+      if (isConnected)
       {
         double val = uf.getRoots()[q[0]]->weight / uf.getRoots()[q[1]]->weight;
         results.push_back(val);
