@@ -52,50 +52,47 @@ public:
 
     if (rootA != rootB)
     {
-      // roots[rootB]->parent = rootA;
-      roots[b]->parent = a;
 
       string head = b;
       double bWeight = roots[b]->weight;
-      do
+
+      for (auto &n : roots)
       {
-        // string parent = roots[head]->parent
-        roots[roots[head]->parent]->weight *= (result * bWeight);
-        head = roots[head]->parent;
-      } while (roots[head]->parent != head);
-
-      // if (roots[a]->parent == a)
-      // {
-      //   roots[a]->weight *= result;
-      //   return;
-      // }
-
-      // for (auto r : roots)
-      // {
-      //   if (r.second->parent == rootA && r.first != b)
-      //   {
-      //     r.second->weight *= result;
-      //   }
-      // }
-    }
-  }
-
-  bool isConnected(string a, string b)
-  {
-    if (roots.find(a) != roots.end() &&
-        roots.find(b) != roots.end())
-    {
-      return findRoot(a) == findRoot(b);
+        if (n.second->parent == rootA && n.first != b)
+        {
+          n.second->weight *= (result * bWeight);
+        }
+      }
     }
 
-    return false;
+    roots[rootB]->parent = rootA;
+  }
+  // cout << a << " ---- " << b << "-------------------------\n";
+  // for (auto r : roots)
+  // {
+  //   cout << r.first << " : " << r.second->parent << " == " << r.second->weight << "\n";
+  // }
+  // cout << "--------------------------------\n";
+}
+
+bool
+isConnected(string a, string b)
+{
+  if (roots.find(a) != roots.end() &&
+      roots.find(b) != roots.end())
+  {
+    return findRoot(a) == findRoot(b);
   }
 
-  unordered_map<string, Node *> getRoots()
-  {
-    return roots;
-  }
-};
+  return false;
+}
+
+unordered_map<string, Node *> getRoots()
+{
+  return roots;
+}
+}
+;
 
 class Solution
 {
@@ -115,11 +112,6 @@ public:
     {
       uf.unionNodes(equations[i][0], equations[i][1], values[i]);
     }
-
-    // for (auto r : uf.getRoots())
-    // {
-    //   cout << r.first << " : " << r.second->parent << " : " << r.second->weight << "\n";
-    // }
 
     vector<double> results{};
     for (auto q : queries)
@@ -156,20 +148,42 @@ int main()
   //     {"x", "x"},
   // };
 
+  // vector<vector<string>> equations{
+  //     {"a", "b"},
+  //     {"b", "c"},
+  // };
+
+  // vector<double> values{
+  //     2.0, 3.0};
+
+  // vector<vector<string>> queries{
+  //     {"a", "c"},
+  //     {"b", "a"},
+  //     {"a", "e"},
+  //     {"a", "a"},
+  //     {"x", "x"},
+  // };
+
   vector<vector<string>> equations{
-      {"a", "b"},
-      {"b", "c"},
+      {"x1", "x2"},
+      {"x2", "x3"},
+      {"x1", "x4"},
+      {"x2", "x5"},
   };
 
   vector<double> values{
-      2.0, 3.0};
+      3.0, 0.5, 3.4, 5.6};
 
   vector<vector<string>> queries{
-      {"a", "c"},
-      {"b", "a"},
-      {"a", "e"},
-      {"a", "a"},
-      {"x", "x"},
+      {"x2", "x4"},
+      {"x1", "x5"},
+      {"x1", "x3"},
+      {"x5", "x5"},
+      {"x5", "x1"},
+      {"x3", "x4"},
+      {"x4", "x3"},
+      {"x6", "x6"},
+      {"x0", "x0"},
   };
 
   vector<double> sol = Solution().calcEquation(equations, values, queries);
