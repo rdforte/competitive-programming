@@ -53,46 +53,45 @@ public:
     if (rootA != rootB)
     {
 
-      string head = b;
-      double bWeight = roots[b]->weight;
+      double bResWeight = roots[a]->weight / result;
+      double ratio = bResWeight / roots[b]->weight;
+      roots[b]->weight = bResWeight;
 
-      for (auto &n : roots)
+      for (auto r : roots)
       {
-        if (n.second->parent == rootA && n.first != b)
+        if (r.second->parent == rootB && r.first != b)
         {
-          n.second->weight *= (result * bWeight);
+          r.second->weight *= ratio;
         }
       }
+      cout << a << " ---- " << b << "-------------------------\n";
+      for (auto r : roots)
+      {
+        cout << r.first << " : " << r.second->parent << " == " << r.second->weight << "\n";
+      }
+      cout << "--------------------------------\n";
+
+      roots[rootB]->parent = rootA;
+    }
+  }
+
+  bool
+  isConnected(string a, string b)
+  {
+    if (roots.find(a) != roots.end() &&
+        roots.find(b) != roots.end())
+    {
+      return findRoot(a) == findRoot(b);
     }
 
-    roots[rootB]->parent = rootA;
+    return false;
   }
-  // cout << a << " ---- " << b << "-------------------------\n";
-  // for (auto r : roots)
-  // {
-  //   cout << r.first << " : " << r.second->parent << " == " << r.second->weight << "\n";
-  // }
-  // cout << "--------------------------------\n";
-}
 
-bool
-isConnected(string a, string b)
-{
-  if (roots.find(a) != roots.end() &&
-      roots.find(b) != roots.end())
+  unordered_map<string, Node *> getRoots()
   {
-    return findRoot(a) == findRoot(b);
+    return roots;
   }
-
-  return false;
-}
-
-unordered_map<string, Node *> getRoots()
-{
-  return roots;
-}
-}
-;
+};
 
 class Solution
 {
@@ -134,6 +133,8 @@ public:
 
 int main()
 {
+
+  // expected: [1.33333,1.00000,-1.00000]
   // vector<vector<string>> equations{
   //     {"a", "e"},
   //     {"b", "e"},
@@ -148,6 +149,7 @@ int main()
   //     {"x", "x"},
   // };
 
+  // expected: [6.00000,0.50000,-1.00000,1.00000,-1.00000]
   // vector<vector<string>> equations{
   //     {"a", "b"},
   //     {"b", "c"},
@@ -164,6 +166,7 @@ int main()
   //     {"x", "x"},
   // };
 
+  // expected: [1.13333,16.80000,1.50000,1.00000,0.05952,2.26667,0.44118,-1.00000,-1.00000]
   vector<vector<string>> equations{
       {"x1", "x2"},
       {"x2", "x3"},
