@@ -134,3 +134,26 @@ public:
   }
 };
 ```
+
+## Minimum Spanning Tree
+A minimum spanning tree (MST) or minimum weight spanning tree is a subset of the edges of a connected, edge-weighted undirected graph that connects all the vertices together, without any cycles and with the minimum possible total edge weight.
+
+![Minimum Spanning Tree](./assets/minimum_spanning_tree.png)
+
+### Prims Algorithm
+Prim's (also known as Jarník's) algorithm is a greedy algorithm used to find the minimum spanning tree in a weighted and undirected graph.
+
+The algorithm operates by building the tree one vertex at a time, from an arbitrary starting vertex, at each step adding the cheapest possible connection from any vertex in the tree to a vertex that is not in the tree.
+
+![Prims Algorithm](./assets/PrimAlgDemo.gif)
+
+To implement Prim's algorithm, essentially we will need the following three data structures:
+
+- **adjacency list**: we need this to represent the graph, i.e. vertices and edges. The adjacency list can be a list of lists or a dictionary of lists.
+
+![Adjacency List](./assets/adjacencylist.png)
+
+- **set**: we need a set to maintain all the vertices that we have added to the final minimum spanning tree, during the construction of the tree. With the help of set, we can determine whether a vertex has been added or not.
+
+- **heap**: due to the nature of the greedy strategy, at each step, we can determine the best edge to be added based on the cost it will add to the tree. Heap (also known as a priority queue) is a data structure that allows us to retrieve the minimum element in constant time and to remove the minimum element in logarithmic time. This fits our need to repeatedly find the lowest cost edge perfectly. [Implement Heap with Priority Queue](https://www.youtube.com/watch?v=JSqznrzWGvc)
+
