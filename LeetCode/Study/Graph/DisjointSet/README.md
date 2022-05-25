@@ -135,7 +135,7 @@ public:
 };
 ```
 
-## Minimum Spanning Tree
+## Minimum Spanning Tree (MST)
 A minimum spanning tree (MST) or minimum weight spanning tree is a subset of the edges of a connected, edge-weighted undirected graph that connects all the vertices together, without any cycles and with the minimum possible total edge weight.
 
 ![Minimum Spanning Tree](./assets/minimum_spanning_tree.png)
@@ -156,4 +156,18 @@ To implement Prim's algorithm, essentially we will need the following three data
 - **set**: we need a set to maintain all the vertices that we have added to the final minimum spanning tree, during the construction of the tree. With the help of set, we can determine whether a vertex has been added or not.
 
 - **heap**: due to the nature of the greedy strategy, at each step, we can determine the best edge to be added based on the cost it will add to the tree. Heap (also known as a priority queue) is a data structure that allows us to retrieve the minimum element in constant time and to remove the minimum element in logarithmic time. This fits our need to repeatedly find the lowest cost edge perfectly. [Implement Heap with Priority Queue](https://www.youtube.com/watch?v=JSqznrzWGvc)
+
+
+### Kruska's Algorithm
+Similiar to Prim's algorithm, Kruskal's algorithm applies the greedy strategy to incrementally add new edges to the final solution.
+
+![Kruskals Algorithm](./Assets/KruskalDemo.gif)
+
+A major difference between them is that in Prim's algorithm the MST (minimal spanning tree) remains connected as a whole throughout the entire process, while in Kruskal's algorithm, the tree is formed by merging the disjoint components together.
+
+**The overall idea of Kruskal's algorithm is that we iterate through all the edges ordered by their costs.** For each edge, we decide whether to add it to the final MST. The decision is based on whether this new addition will help to connect more dots (i.e. vertices).
+
+![Union Find Example](./Assets/union_find_examples.png)
+
+A more concise criteria to determine whether we should add a new edge in Kruskal's algorithm is that whether both ends of the edge belong to the same component (group).
 

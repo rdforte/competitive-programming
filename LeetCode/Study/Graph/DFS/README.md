@@ -29,6 +29,7 @@ the keys are nodes/vertices and the value is a list containing the neighbouring 
       {"f", {}},
   };
 ```
+_For the above if the vertices are not strings then we can use a vector instead of an unordered_map and refer to the index as the vertice._ 
 
 ### NOTES
 DFS is utilised using a stack. This can be done through creating our own stack along with an interative approach or we can utilise the call stack with a recursive approach.
