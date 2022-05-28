@@ -8,7 +8,7 @@ int main()
 {
   cout << boolalpha;
 
-  bool isTheSame = (2 << 3) == (2 * pow(2, 3));
+  bool isTheSame = (6 << 3) == (6 * pow(2, 3));
 
   cout << isTheSame;
 }

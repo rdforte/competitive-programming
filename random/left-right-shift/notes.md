@@ -5,8 +5,8 @@ Multiplying operand1 by 2^operand2
 
 Example:
 ```
-int shifted = 2 << 3;
-cout << shifted; // 16
+int shifted = 6 << 3;
+cout << shifted; // 48
 ```
 
 ![Left Shift Image](./assets/left_shift.png)
