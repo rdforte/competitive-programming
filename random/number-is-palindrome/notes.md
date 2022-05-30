@@ -1,0 +1,1 @@
+A number is a palindrome if it reads the same backward as forward, e.g., 1221.
