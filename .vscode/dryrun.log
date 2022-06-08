@@ -1,0 +1,6 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory `/Users/ryanforte/Desktop/competitive-programming'
+make: Leaving directory `/Users/ryanforte/Desktop/competitive-programming'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+
