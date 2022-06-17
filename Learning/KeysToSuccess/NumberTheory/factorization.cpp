@@ -3,6 +3,7 @@
 #define lli long long int
 using namespace std;
 
+// time complexity is √n as we iterate over n i doubles each time.
 int print_factors_count(lli N)
 {
   int cnt = 0;
