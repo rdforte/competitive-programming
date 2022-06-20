@@ -23,7 +23,7 @@ the keys are nodes/vertices and the value is a list containing the neighbouring 
   unordered_map<string, vector<string>> graph{
       {"a", {"c", "b"}},
       {"b", {"d"}},
-      {"c", {"e"}},
+      {"c", {"e"}}
       {"d", {"f"}},
       {"e", {}},
       {"f", {}},
@@ -33,3 +33,6 @@ _For the above if the vertices are not strings then we can use a vector instead 
 
 ### NOTES
 DFS is utilised using a stack. This can be done through creating our own stack along with an interative approach or we can utilise the call stack with a recursive approach.
+
+When implementing DFS we can use a stack.
+[std::stack](https://en.cppreference.com/w/cpp/container/stack)
