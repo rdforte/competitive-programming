@@ -6,21 +6,15 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
- 
-make: *** No rule to make target `all'.  Stop.
 
-
-# Make data base, printed on Tue Jun 21 07:22:50 2022
+# Make data base, printed on Thu Jun 23 21:50:02 2022
 
 # Variables
 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
- 
 # automatic
 ?F = $(notdir $?)
-# environment
-ELECTRON_NO_ATTACH_CONSOLE = 1
 # environment
 VSCODE_LOG_NATIVE = false
 # environment
@@ -46,15 +40,13 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/_w/7ly5cb191lj58m6n4m_th3740000gn/T/vscode-ipc-8dd00e3f-2609-488e-adf8-8aa4a04c7ba7.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/_w/7ly5cb191lj58m6n4m_th3740000gn/T/vscode-ipc-8d6ec57b-efa8-40b4-8c8e-87e62c27b779.sock
 # environment
-VSCODE_CWD = /Users/ryanforte/Desktop
+VSCODE_CWD = /
 # environment
 PATH = /Users/ryanforte/.nvm/versions/node/v14.17.4/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Library/Apple/usr/bin:/Users/ryanforte/go/bin
 # environment
 NVM_BIN = /Users/ryanforte/.nvm/versions/node/v14.17.4/bin
-# environment
-LaunchInstanceID = 1D7E12B5-48DE-4D35-BDAD-AF85C08DC3F6
 # environment
 VSCODE_LOG_STACK = false
 # environment
@@ -78,9 +70,7 @@ HOME = /Users/ryanforte
 # default
 MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
 # environment
-VSCODE_CLI = 1
-# environment
-VSCODE_CODE_CACHE_PATH = /Users/ryanforte/Library/Application Support/Code/CachedData/4af164ea3a06f701fe3e89a2bcbb421d2026b68f
+VSCODE_CODE_CACHE_PATH = /Users/ryanforte/Library/Application Support/Code/CachedData/30d9c6cd9483b2cc586687151bcbcd635f373630
 # environment
 LOGNAME = ryanforte
 # environment
@@ -98,21 +88,17 @@ MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
 # environment
-SHLVL = 3
+SHLVL = 1
 # default
 MAKE_VERSION := 3.81
 # environment
 USER = ryanforte
 # makefile
 .DEFAULT_GOAL := 
-# environment
-TERM_SESSION_ID = CFB88E4A-5359-404B-94E5-EEE3C41CA48F
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # default
 MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
-# environment
-TERM_PROGRAM = Apple_Terminal
 # default
 .VARIABLES := 
 # environment
@@ -120,7 +106,7 @@ TMPDIR = /var/folders/_w/7ly5cb191lj58m6n4m_th3740000gn/T/
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /Users/ryanforte/Library/Application Support/Code/1.68.0-main.sock
+VSCODE_IPC_HOOK = /Users/ryanforte/Library/Application Support/Code/1.68.1-main.sock
 # makefile
 MAKEFLAGS = Rrqp
 # environment
@@ -128,11 +114,9 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-TERM_PROGRAM_VERSION = 444
-# environment
 NVM_DIR = /Users/ryanforte/.nvm
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.32046462.32046468.DA94322F-7983-42BB-9D6B-1DEE0925A5FC
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.33131327.33131333
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -147,9 +131,6 @@ MAKEFILES :=
 <F = $(notdir $<)
 # environment
 LC_ALL = C
- 
-# environment
-SECURITYSESSIONID = 186a6
 # automatic
 ^F = $(notdir $^)
 # default
@@ -161,11 +142,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-TERM = xterm-256color
-# environment
-VSCODE_PID = 6611
+VSCODE_PID = 54299
 # variable set hash-table stats:
-# Load=74/1024=7%, Rehash=0, Collisions=1/95=1%
+# Load=66/1024=6%, Rehash=0, Collisions=1/87=1%
 
 # Pattern-specific Variable Values
 
@@ -247,6 +226,8 @@ GNUmakefile:
 # strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
 # strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
 
-# Finished Make data base on Tue Jun 21 07:22:50 2022
+# Finished Make data base on Thu Jun 23 21:50:02 2022
 
  
+make: *** No rule to make target `all'.  Stop.
+
