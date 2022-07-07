@@ -13,7 +13,7 @@ public:
   {
     int len = graph.size() - 1;
     queue<vector<int>> q;
-    vector<vector<int>> paths{};
+    vector<vector<int>> paths;
 
     q.push(vector<int>{0});
 

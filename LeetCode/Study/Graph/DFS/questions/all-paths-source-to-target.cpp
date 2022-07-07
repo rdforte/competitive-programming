@@ -12,7 +12,7 @@ public:
   vector<vector<int>> allPathsSourceTarget(vector<vector<int>> &graph)
   {
     int len = graph.size() - 1;
-    stack<vector<int>> s{};
+    stack<vector<int>> s;
     vector<vector<int>> paths{};
 
     s.push(vector<int>{0});
