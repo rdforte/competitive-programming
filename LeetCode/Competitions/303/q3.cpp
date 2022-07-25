@@ -1,3 +1,4 @@
+// https://leetcode.com/problems/design-a-food-rating-system/
 #include <vector>
 #include <string>
 #include <unordered_map>
@@ -9,6 +10,10 @@ using namespace std;
 class FoodRatings
 {
 public:
+  // sets automatically order pairs by their first property. If the first property is the same
+  // for both pairs then it will order it by its second.
+  // sets order in ascending order. Thereby when you set the rating to negative. The largest rating will
+  // be first.
   unordered_map<string, set<pair<int, string>>> cuisine_ratings;
   unordered_map<string, string> food_cuisine;
   unordered_map<string, int> food_rating;
@@ -31,6 +36,6 @@ public:
   }
   string highestRated(string cuisine)
   {
-    return begin(cuisine_ratings[cuisine])->second;
+    return cuisine_ratings[cuisine].begin()->second;
   }
 };
