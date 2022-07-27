@@ -1,77 +1,53 @@
+// https://leetcode.com/problems/diagonal-traverse/
 #include <vector>
 #include <utility>
 #include <string>
 #include <iostream>
+#include <algorithm>
+#include <functional>
 
 using namespace std;
 
 class Solution
 {
-private:
-  string up = "up";
-  string down = "down";
-
 public:
   vector<int> findDiagonalOrder(vector<vector<int>> &mat)
   {
-    vector<int> diagonalOrder;
+    if (mat.size() == 0)
+      return {};
 
-    pair<int, int> location(0, 0); // row, col
-    string direction("up");
+    int numRows = mat.size();
+    int numCols = mat[0].size();
 
-    while (diagonalOrder.size() < (mat.size() * mat[0].size()))
+    vector<int> diagonals;
+
+    vector<int> currentDiagonal;
+
+    // iterate over start of row and columns.
+    for (int i = 0; i < numRows + numCols - 1; i++)
     {
-      cout << "starting dir: " << direction << "\n";
-      cout << location.first << " : " << location.second << "\n";
-      diagonalOrder.push_back(mat[location.first][location.second]);
+      currentDiagonal.clear();
 
-      if (direction == up)
+      // determine the head of the diagonal.
+      int row = i < numCols ? 0 : (i - numCols + 1);
+      int col = i < numCols ? i : (numCols - 1);
+
+      while (row < numRows && col >= 0)
       {
-        cout << direction << "\n";
-        int rowAbove = location.first - 1;
-        int colRight = location.second + 1;
-        if (rowAbove >= 0 && colRight < mat.size())
-        {
-          location = {rowAbove, colRight};
-        }
-        else
-        {
-          direction = down;
-          if (location.second + 1 < mat.size())
-          {
-            location = {location.first, location.second + 1};
-          }
-          else
-          {
-            location = {location.first + 1, location.second};
-          }
-        }
+        currentDiagonal.push_back(mat[row][col]);
+
+        row++;
+        col--;
       }
-      else
-      {
-        cout << direction << "\n";
-        int rowUnder = location.first + 1;
-        int colLeft = location.second - 1;
-        if (rowUnder < mat.size() && colLeft >= 0)
-        {
-          location = {rowUnder, colLeft};
-        }
-        else
-        {
-          direction = up;
-          if (location.first + 1 < mat.size())
-          {
-            location = {location.first + 1, location.second};
-          }
-          else
-          {
-            location = {location.first, location.second + 1};
-          }
-        }
-      }
+
+      if (i % 2 == 0)
+        reverse(currentDiagonal.begin(), currentDiagonal.end());
+
+      for (auto d : currentDiagonal)
+        diagonals.push_back(d);
     }
 
-    return diagonalOrder;
+    return diagonals;
   }
 };
 
