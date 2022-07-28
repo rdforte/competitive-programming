@@ -1,3 +1,4 @@
+// https://leetcode.com/problems/counting-bits/
 #include <iostream>
 #include <vector>
 
@@ -5,25 +6,25 @@
  * In order to get the number of 1's in the binary version of the number we have to use the bitwise & operator as a mask and shift the number.
  * Example:
  * The number 6
- * 
+ *
  * 110 <- number 6
  * 001 <-mask
  * = 0 because 0 & 1 = 0
- * 
+ *
  * shift 110 by 1
- * 
+ *
  * 011
  * 001
  * = 1 so now we add 1 to the count
- * 
+ *
  * shift by 1 again
- * 
+ *
  * 001
  * 001
  * = 1 add 1 to the count
- * 
+ *
  * if we shift 001 again we get the number 0 so we just check for 0 and if it is 0 then we stop and return the count.
- * 
+ *
  * total = 2
  */
 
