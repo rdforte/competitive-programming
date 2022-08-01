@@ -33,6 +33,8 @@ int main()
       file << "#include <set>\n";
       file << "#include <algorithm>\n";
       file << "#include <utility>\n";
+      file << "#include <unordered_set>\n";
+      file << "#include <unordered_map>\n";
       file << "\n";
       file << "using namespace std;\n";
       file << "\n";

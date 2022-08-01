@@ -10,7 +10,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target `all'.  Stop.
 
 
-# Make data base, printed on Fri Jul 29 08:41:47 2022
+# Make data base, printed on Sun Jul 31 12:14:49 2022
 
 # Variables
 
@@ -18,9 +18,8 @@ make: *** No rule to make target `all'.  Stop.
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
-# environment
-NVM_INC = /Users/ryanforte/.nvm/versions/node/v14.17.4/include/node
 # automatic
+ 
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
@@ -41,15 +40,15 @@ __CFBundleIdentifier = com.microsoft.VSCode
 # environment
 VSCODE_CWD = /
 # environment
-PATH = /Users/ryanforte/.nvm/versions/node/v14.17.4/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Library/Apple/usr/bin:/Users/ryanforte/go/bin
+PATH = /usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 # environment
-NVM_BIN = /Users/ryanforte/.nvm/versions/node/v14.17.4/bin
+LaunchInstanceID = 23BF5FF9-929F-42C1-9743-C22AC17AAB52
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.j0dYJMbmxa/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.uFPR0Y04YA/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -68,8 +67,6 @@ VSCODE_CODE_CACHE_PATH = /Users/ryanforte/Library/Application Support/Code/Cache
 LOGNAME = ryanforte
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
-# environment
-NVM_CD_FLAGS = -q
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
@@ -109,8 +106,6 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-NVM_DIR = /Users/ryanforte/.nvm
-# environment
 XPC_SERVICE_NAME = application.com.microsoft.VSCode.35476208.35476214
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
@@ -126,6 +121,8 @@ MAKEFILES :=
 <F = $(notdir $<)
 # environment
 LC_ALL = C
+# environment
+SECURITYSESSIONID = 186a4
 # automatic
 ^F = $(notdir $^)
 # default
@@ -137,10 +134,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 31246
- 
+VSCODE_PID = 638
 # variable set hash-table stats:
-# Load=62/1024=6%, Rehash=0, Collisions=1/86=1%
+# Load=60/1024=6%, Rehash=0, Collisions=1/84=1%
 
 # Pattern-specific Variable Values
 
@@ -209,6 +205,6 @@ makefile:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Fri Jul 29 08:41:47 2022
+# Finished Make data base on Sun Jul 31 12:14:49 2022
 
  
