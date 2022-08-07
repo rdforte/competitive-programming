@@ -2,6 +2,7 @@
 #include <vector>
 #include <stack>
 #include <algorithm>
+#include <iostream>
 
 using namespace std;
 
@@ -10,17 +11,9 @@ struct TreeNode
   int val;
   TreeNode *left;
   TreeNode *right;
+  TreeNode() : val(0), left(nullptr), right(nullptr) {}
   TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-};
-
-struct NodeSuccessor
-{
-  TreeNode *node;
-  vector<TreeNode *> successors;
-
-  NodeSuccessor() : node(nullptr), successors({}) {}
-  NodeSuccessor(TreeNode *n) : node(n), successors({}) {}
-  NodeSuccessor(TreeNode *n, vector<TreeNode *> p) : node(n), successors(p) {}
+  TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
 class Solution
@@ -32,45 +25,79 @@ public:
     if (root == p)
       return root;
 
-    stack<NodeSuccessor> s;
+    stack<TreeNode *> s;
+    vector<TreeNode *> prev{};
 
-    s.push({root});
+    s.push(root);
+
+    bool isFound = false;
 
     while (!s.empty())
     {
       auto n = s.top();
       s.pop();
 
-      if (n.node == p)
+      prev.push_back(n);
+
+      if (n == p)
       {
-        sort(n.successors.begin(), n.successors.end(), [](auto left, auto right)
-             { return left->val < right->val; });
-        for (auto pNode : n.successors)
+        isFound = true;
+        if (n->right != nullptr)
         {
-          if (pNode->val > p->val)
+          s.push(n->right);
+        }
+        else
+        {
+          TreeNode *node = new TreeNode(INT_MAX);
+          for (int i = prev.size() - 1; i >= 0; i--)
           {
-            return pNode;
+            if (prev[i]->val > p->val && prev[i]->val < node->val)
+            {
+              node = prev[i];
+            }
           }
+          return node->val == INT_MAX ? NULL : node;
         }
       }
-
-      if (n.node->left != nullptr)
+      else if (isFound)
       {
-        vector<TreeNode *> v(n.successors.begin(), n.successors.end());
-        v.push_back(n.node);
-        s.push({n.node->left,
-                v});
+        if (n->left != nullptr)
+        {
+          s.push(n->left);
+        }
+        else
+        {
+          return prev[prev.size() - 1];
+        }
       }
-
-      if (n.node->right != nullptr)
+      else
       {
-        vector<TreeNode *> v(n.successors.begin(), n.successors.end());
-        v.push_back(n.node);
-        s.push({n.node->right,
-                v});
+        if (n->right != nullptr)
+          s.push(n->right);
+
+        if (n->left != nullptr)
+          s.push(n->left);
       }
     }
 
     return NULL;
   }
 };
+
+int main()
+{
+  TreeNode *one = new TreeNode(1);
+  TreeNode *two = new TreeNode(2, one, nullptr);
+  TreeNode *four = new TreeNode(4);
+  TreeNode *seven = new TreeNode(7);
+  TreeNode *nine = new TreeNode(9);
+  TreeNode *eight = new TreeNode(8, seven, nine);
+  TreeNode *three = new TreeNode(3, two, four);
+  TreeNode *five = new TreeNode(5, three, eight);
+
+  TreeNode *sol = Solution().inorderSuccessor(five, nine);
+  if (sol == NULL)
+    cout << "null";
+  else
+    cout << sol->val;
+}
