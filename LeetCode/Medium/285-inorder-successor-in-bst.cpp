@@ -21,66 +21,22 @@ class Solution
 public:
   TreeNode *inorderSuccessor(TreeNode *root, TreeNode *p)
   {
+    TreeNode *successor = nullptr;
 
-    if (root == p)
-      return root;
-
-    stack<TreeNode *> s;
-    vector<TreeNode *> prev{};
-
-    s.push(root);
-
-    bool isFound = false;
-
-    while (!s.empty())
+    while (root != nullptr)
     {
-      auto n = s.top();
-      s.pop();
-
-      prev.push_back(n);
-
-      if (n == p)
+      if (p->val >= root->val)
       {
-        isFound = true;
-        if (n->right != nullptr)
-        {
-          s.push(n->right);
-        }
-        else
-        {
-          TreeNode *node = new TreeNode(INT_MAX);
-          for (int i = prev.size() - 1; i >= 0; i--)
-          {
-            if (prev[i]->val > p->val && prev[i]->val < node->val)
-            {
-              node = prev[i];
-            }
-          }
-          return node->val == INT_MAX ? NULL : node;
-        }
-      }
-      else if (isFound)
-      {
-        if (n->left != nullptr)
-        {
-          s.push(n->left);
-        }
-        else
-        {
-          return prev[prev.size() - 1];
-        }
+        root = root->right;
       }
       else
       {
-        if (n->right != nullptr)
-          s.push(n->right);
-
-        if (n->left != nullptr)
-          s.push(n->left);
+        successor = root;
+        root = root->left;
       }
     }
 
-    return NULL;
+    return successor;
   }
 };
 
