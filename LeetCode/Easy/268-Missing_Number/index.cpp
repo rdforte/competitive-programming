@@ -1,9 +1,6 @@
 #include <iostream>
 #include <vector>
 
-// TimeComplexity = O(n) loop through nums once.
-// SpaceComplexity = O(1) as we have to keep track of missing number.
-
 using namespace std;
 
 class Solution
