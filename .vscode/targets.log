@@ -10,7 +10,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target `all'.  Stop.
 
 
-# Make data base, printed on Tue Aug 16 08:06:20 2022
+# Make data base, printed on Sat Aug 20 07:40:18 2022
 
 # Variables
 
@@ -19,7 +19,6 @@ make: *** No rule to make target `all'.  Stop.
 # automatic
 ?F = $(notdir $?)
 # environment
- 
 NVM_INC = /Users/ryanforte/.nvm/versions/node/v14.17.4/include/node
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
@@ -46,13 +45,14 @@ PATH = /Users/ryanforte/.nvm/versions/node/v14.17.4/bin:/usr/local/bin:/usr/bin:
 # environment
 NVM_BIN = /Users/ryanforte/.nvm/versions/node/v14.17.4/bin
 # environment
-LaunchInstanceID = 6597779E-861D-4442-98BC-770FD01413EF
+LaunchInstanceID = CB324C87-9F10-4645-B5CC-5009633059A7
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.BYHpZ7Vfsa/Listeners
+ 
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.NOeEphBmeb/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -66,11 +66,11 @@ HOME = /Users/ryanforte
 # default
 MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
 # environment
-VSCODE_CODE_CACHE_PATH = /Users/ryanforte/Library/Application Support/Code/CachedData/da76f93349a72022ca4670c1b84860304616aaa2
+VSCODE_CODE_CACHE_PATH = /Users/ryanforte/Library/Application Support/Code/CachedData/e4503b30fc78200f846c62cf8091b76ff5547662
 # environment
 LOGNAME = ryanforte
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 NVM_CD_FLAGS = -q
 # environment
@@ -102,7 +102,7 @@ TMPDIR = /var/folders/_w/7ly5cb191lj58m6n4m_th3740000gn/T/
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /Users/ryanforte/Library/Application Support/Code/1.70.0-main.sock
+VSCODE_IPC_HOOK = /Users/ryanforte/Library/Application Support/Code/1.70.2-main.sock
 # environment
 MallocNanoZone = 0
 # makefile
@@ -114,7 +114,7 @@ MFLAGS = -Rrqp
 # environment
 NVM_DIR = /Users/ryanforte/.nvm
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.37644134.37644140
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.38157119.38157125
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -130,7 +130,7 @@ MAKEFILES :=
 # environment
 LC_ALL = C
 # environment
-SECURITYSESSIONID = 186a6
+SECURITYSESSIONID = 186bf
 # automatic
 ^F = $(notdir $^)
 # default
@@ -138,12 +138,11 @@ SUFFIXES :=
 # default
 .INCLUDE_DIRS = /usr/local/include
 # environment
- 
 MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 461
+VSCODE_PID = 697
 # variable set hash-table stats:
 # Load=64/1024=6%, Rehash=0, Collisions=1/88=1%
 
@@ -153,7 +152,7 @@ VSCODE_PID = 461
 
 # Directories
 
-# . (device 16777220, inode 6913392): 14 files, no impossibilities.
+# . (device 16777222, inode 6913392): 14 files, no impossibilities.
 
 # 14 files, no impossibilities in 1 directories.
 
@@ -182,6 +181,7 @@ comp:
 
 # Not a target:
 .SUFFIXES:
+ 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -214,6 +214,6 @@ makefile:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Tue Aug 16 08:06:20 2022
+# Finished Make data base on Sat Aug 20 07:40:18 2022
 
  
