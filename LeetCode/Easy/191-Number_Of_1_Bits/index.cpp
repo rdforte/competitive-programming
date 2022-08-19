@@ -12,7 +12,6 @@ public:
 
     for (int i = 0; i < 32; i++)
     {
-      cout << "mask: " << mask << "\n";
       if ((n & mask) != 0)
         numBits++;
       mask <<= 1;
@@ -24,14 +23,11 @@ public:
 
 int main()
 {
-  uint32_t n = 00000000000000000000000000001011; // is the same as 11
-
   // We are using actual numbers though when we use bitwise operators it
   // treats the numbers as bits.
   // the mask starts at 1 and then increments to 2,4,8,16,32 ...
   // though in binary this looks like, 1, 10, 100, 1000, 10000
   // so we can use this as a mask.
 
-  // cout << Solution().hammingWeight(11); // 3
-  cout << (11 & 8);
+  cout << Solution().hammingWeight(11); // 3
 }
