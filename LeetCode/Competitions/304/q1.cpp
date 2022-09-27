@@ -1,12 +1,5 @@
 // https://leetcode.com/problems/make-array-zero-by-subtracting-equal-amounts/
-#include <iostream>
-#include <queue>
-#include <stack>
-#include <vector>
-#include <set>
-#include <algorithm>
-#include <utility>
-#include <unordered_set>
+#include "../../../stdc++.h"
 
 using namespace std;
 

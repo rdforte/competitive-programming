@@ -26,18 +26,13 @@ int main()
     {
 
       file.open("./LeetCode/Competitions/" + directory + "/" + "q" + to_string(i) + ".cpp");
-      file << "#include <iostream>\n";
-      file << "#include <queue>\n";
-      file << "#include <stack>\n";
-      file << "#include <vector>\n";
-      file << "#include <set>\n";
-      file << "#include <algorithm>\n";
-      file << "#include <utility>\n";
-      file << "#include <unordered_set>\n";
-      file << "#include <unordered_map>\n";
+      file << "#include \"../../../stdc++.h\"\n";
       file << "\n";
       file << "using namespace std;\n";
       file << "\n";
+      file << "int main() {\n";
+      file << " // Solution\n";
+      file << "}\n";
       file.close();
     }
 
