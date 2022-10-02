@@ -4,33 +4,25 @@ using namespace std;
 
 int lengthOfLongestSubstring(string str)
 {
-  int longest = 0;
-  unordered_set<char> s;
+  int strLen = str.size(), res = 0;
+  unordered_map<char, int> mp;
 
-  int a = 0;
-  for (int b = 0; b < str.size(); b++)
+  for (int j = 0, i = 0; j < strLen; j++)
   {
-    if (s.find(str[b]) == s.end())
+    if (mp.find(str[j]) == mp.end())
     {
-      s.insert(str[b]);
+      mp[str[j]] = j;
     }
     else
     {
-      while (str[a] != str[b])
-      {
-        s.erase(s.find(str[a]));
-        a++;
-      }
-      a++;
+      i = max(mp[str[j]] + 1, i);
+      mp[str[j]] = j;
     }
 
-    if (b - a + 1 > longest)
-    {
-      longest = b - a + 1;
-    }
+    res = max(res, j - i + 1);
   }
 
-  return longest;
+  return res;
 }
 
 int main()
