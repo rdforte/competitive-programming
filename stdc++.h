@@ -48,18 +48,18 @@
 #include <cstring>
 #include <ctime>
 
-#if __cplusplus >= 201103L
-#include <ccomplex>
-#include <cfenv>
-#include <cinttypes>
-// #include <cstdalign>
-#include <cstdbool>
-#include <cstdint>
-#include <ctgmath>
-// #include <cuchar>
-#include <cwchar>
-#include <cwctype>
-#endif
+// #if __cplusplus >= 201103L
+// #include <ccomplex>
+// #include <cfenv>
+// #include <cinttypes>
+// // #include <cstdalign>
+// #include <cstdbool>
+// #include <cstdint>
+// #include <ctgmath>
+// // #include <cuchar>
+// #include <cwchar>
+// #include <cwctype>
+// #endif
 
 // C++
 #include <algorithm>
@@ -95,29 +95,29 @@
 #include <valarray>
 #include <vector>
 
-#if __cplusplus >= 201103L
-#include <array>
-#include <atomic>
-#include <chrono>
-#include <codecvt>
-#include <condition_variable>
-#include <forward_list>
-#include <future>
-#include <initializer_list>
-#include <mutex>
-#include <random>
-#include <ratio>
-#include <regex>
-#include <scoped_allocator>
-#include <system_error>
-#include <thread>
-#include <tuple>
-#include <typeindex>
-#include <type_traits>
+// #if __cplusplus >= 201103L
+// #include <array>
+// #include <atomic>
+// #include <chrono>
+// #include <codecvt>
+// #include <condition_variable>
+// #include <forward_list>
+// #include <future>
+// #include <initializer_list>
+// #include <mutex>
+// #include <random>
+// #include <ratio>
+// #include <regex>
+// #include <scoped_allocator>
+// #include <system_error>
+// #include <thread>
+// #include <tuple>
+// #include <typeindex>
+// #include <type_traits>
 #include <unordered_map>
 #include <unordered_set>
-#endif
+// #endif
 
-#if __cplusplus >= 201402L
-#include <shared_mutex>
-#endif
+// #if __cplusplus >= 201402L
+// #include <shared_mutex>
+// #endif
