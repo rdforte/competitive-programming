@@ -72,7 +72,7 @@ int main()
       {"col2", 10},
       {"col1", 10},
       {"col2", 70},
-      {"", 500},
+      {"", 500}, // file not belonging to a collection
       {"col3", 1000}};
 
   FileSizes *f = new FileSizes(files);
