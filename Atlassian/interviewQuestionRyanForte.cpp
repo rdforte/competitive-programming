@@ -8,7 +8,7 @@ class FileSizes
   set<pair<int, string>, greater<pair<int, string>>> orderedFileBySizes;
   int totalSize = 0;
 
-  // Time Complexity O(n)
+  // Time Complexity O(n*log*n)
   // Space Complexity O(n)
 public:
   FileSizes(vector<pair<string, int>> filesSizes)
