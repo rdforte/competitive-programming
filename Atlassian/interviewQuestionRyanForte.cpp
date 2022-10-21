@@ -1,12 +1,15 @@
-#include "../stdc++.h"
+#include <bits/stdc++.h>
 
 using namespace std;
 
+// Space Complexity O(n)
 class FileSizes
 {
   set<pair<int, string>, greater<pair<int, string>>> orderedFileBySizes;
   int totalSize = 0;
 
+  // Time Complexity O(n)
+  // Space Complexity O(n)
 public:
   FileSizes(vector<pair<string, int>> filesSizes)
   {
@@ -37,11 +40,14 @@ public:
     }
   }
 
+  // Time Complexity O(1);
   int findTotalSizeOfAllFiles()
   {
     return totalSize;
   }
 
+  // Time Complexity O(n)
+  // Space Complexity O(n)
   vector<string> findTopFileByCollections(int n)
   {
     vector<string> collections;
@@ -102,5 +108,5 @@ int main()
       throw logic_error("expected collection "s + expectedCollections[i] + " except got "s + topCollections[i]);
     }
   }
-  cout << "expect collections to be in order of col1, col2\n";
+  cout << "expect collections to be in order of col3, col2\n";
 }
