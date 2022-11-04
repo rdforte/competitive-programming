@@ -7,33 +7,25 @@ vector<vector<int>> floodFill(vector<vector<int>> &image, int sr, int sc, int co
     if (image[sr][sc] == color)
         return image;
 
-    queue<pair<int, int>> q;
-
-    q.push({sr, sc});
-
-    int nodeColor = image[sr][sc];
-
-    while (!q.empty())
-    {
-        auto pixel = q.front();
-        q.pop();
-
-        image[pixel.first][pixel.second] = color;
-
-        if (pixel.second - 1 >= 0 && image[pixel.first][pixel.second - 1] == nodeColor)
-            q.push({pixel.first, pixel.second - 1});
-
-        if (pixel.first - 1 >= 0 && image[pixel.first - 1][pixel.second] == nodeColor)
-            q.push({pixel.first - 1, pixel.second});
-
-        if (pixel.second + 1 < image[image.size() - 1].size() && image[pixel.first][pixel.second + 1] == nodeColor)
-            q.push({pixel.first, pixel.second + 1});
-
-        if (pixel.first + 1 < image.size() && image[pixel.first + 1][pixel.second] == nodeColor)
-            q.push({pixel.first + 1, pixel.second});
-    }
+    dfs(image, sr, sc, color, image[sr][sc]);
 
     return image;
+}
+
+void dfs(vector<vector<int>> &image, int sr, int sc, int newColor, int nodeColor)
+{
+    if (sr >= image.size() || sr < 0 || sc >= image[image.size() - 1].size() || sc < 0)
+        return;
+
+    if (image[sr][sc] != nodeColor)
+        return;
+
+    image[sr][sc] = newColor;
+
+    dfs(image, sr, sc - 1, newColor, nodeColor);
+    dfs(image, sr - 1, sc, newColor, nodeColor);
+    dfs(image, sr, sc + 1, newColor, nodeColor);
+    dfs(image, sr + 1, sc, newColor, nodeColor);
 }
 
 int main()
