@@ -10,9 +10,9 @@ int minTimeToVisitAllPoints(vector<vector<int>> &points)
   int ans = 0;
   for (int i = 1; i < points.size(); i++)
   {
-    int a = abs(points[i][0] - points[i - 1][0]);
-    int b = abs(points[i][1] - points[i - 1][1]);
-    ans += min(a, b) + abs(a - b);
+    int x = abs(points[i][0] - points[i - 1][0]);
+    int y = abs(points[i][1] - points[i - 1][1]);
+    ans += min(x, y) + abs(x - y);
   }
   return ans;
 };
