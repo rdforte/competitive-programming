@@ -26,7 +26,7 @@ ListNode *addTwoNumbers(ListNode *l1, ListNode *l2)
     nextNode->val = remainder;
     int carryToNext = sum - remainder;
 
-    if ((l1 and l1->next != nullptr) or (l2 and l2->next != nullptr) or (carryToNext) >= 10)
+    if ((l1 and l1->next) or (l2 and l2->next) or (carryToNext) >= 10)
     {
       ListNode *next = new ListNode(carryToNext / 10);
       nextNode->next = next;
