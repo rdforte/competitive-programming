@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/add-two-numbers/
-#include <iostream>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -22,7 +22,7 @@ ListNode *addTwoNumbers(ListNode *l1, ListNode *l2)
     int l2Val = l2 ? l2->val : 0;
 
     int sum = l1Val + l2Val + nextNode->val;
-    int remainder = sum % (10);
+    int remainder = sum % 10;
     nextNode->val = remainder;
     int carryToNext = sum - remainder;
 
