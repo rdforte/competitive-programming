@@ -22,9 +22,9 @@ ListNode *addTwoNumbers(ListNode *l1, ListNode *l2)
     int l2Val = l2 ? l2->val : 0;
 
     int sum = l1Val + l2Val + nextNode->val;
-    int remainder = sum % 10;
-    nextNode->val = remainder;
-    int carryToNext = sum - remainder;
+    int rem = sum % 10;
+    nextNode->val = rem;
+    int carryToNext = sum - rem;
 
     if ((l1 and l1->next) or (l2 and l2->next) or (carryToNext) >= 10)
     {
