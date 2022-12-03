@@ -32,11 +32,7 @@ int main()
     getline(cin, r2);
     getline(cin, r3);
 
-    auto rs1 = RuckSack(r1);
-    auto rs2 = RuckSack(r2);
-    auto rs3 = RuckSack(r3);
-
-    vector<RuckSack> rsList{rs1, rs2, rs3};
+    vector<RuckSack> rsList{RuckSack(r1), RuckSack(r2), RuckSack(r3)};
 
     sort(rsList.begin(), rsList.end(), [](RuckSack left, RuckSack right)
          { return left.s.size() > right.s.size(); });
