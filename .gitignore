@@ -1,3 +1,6 @@
 */**/tempCodeRunnerFile.cpp
 
 */**/index
+
+# ignore executables in advent of code
+AdventOfCode/**/q*
