@@ -3,4 +3,5 @@
 */**/index
 
 # ignore executables in advent of code
-AdventOfCode/**/q*
+AdventOfCode/**/q1
+AdventOfCode/**/q2
