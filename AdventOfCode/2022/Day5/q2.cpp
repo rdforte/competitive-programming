@@ -5,7 +5,7 @@ using namespace std;
 int main()
 {
   freopen("input.txt", "r", stdin);
-  freopen("q1output.txt", "w", stdout);
+  freopen("q2output.txt", "w", stdout);
 
   vector<stack<char>> crates(9);
   vector<vector<char>> tempCrates(9);
@@ -68,13 +68,22 @@ int main()
       }
     }
 
+    stack<char> tempStack;
     while (amount > 0)
     {
       amount--;
       char crate = crates[from].top();
       crates[from].pop();
+      tempStack.push(crate);
+    }
+
+    while (!tempStack.empty())
+    {
+      char crate = tempStack.top();
+      tempStack.pop();
       crates[to].push(crate);
     }
+
     amount = -1;
     from = -1;
     to = -1;
