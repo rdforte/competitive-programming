@@ -16,10 +16,7 @@ int dfs(string dir, vector<int> &v)
     {
       int dirSize = dfs(s, v);
       totalSizeOfDir += dirSize;
-      if (dirSize <= 100000)
-      {
-        v.push_back(dirSize);
-      }
+      v.push_back(dirSize);
     }
     else if (s == "$ ls")
     {
@@ -48,14 +45,24 @@ int dfs(string dir, vector<int> &v)
 int main()
 {
   freopen("input.txt", "r", stdin);
-  freopen("q1output.txt", "w", stdout);
+  freopen("q2output.txt", "w", stdout);
   vector<int> v;
-  dfs("", v);
+  int totalSpace = dfs("", v);
 
-  int total = 0;
-  for (auto size : v)
+  if (totalSpace <= 40000000)
   {
-    total += size;
+    cout << 0 << "\n";
   }
-  cout << total;
+  else
+  {
+    int dirSize = INT_MAX;
+    for (auto size : v)
+    {
+      if (totalSpace - size <= 40000000)
+      {
+        dirSize = min(dirSize, size);
+      }
+    }
+    cout << dirSize << "\n";
+  }
 }
