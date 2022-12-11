@@ -46,12 +46,13 @@ void addTailPosition(int row, int col, set<string> &s)
 int main()
 {
   freopen("input.txt", "r", stdin);
-  freopen("q1output.txt", "w", stdout);
+  freopen("q2output.txt", "w", stdout);
 
   set<string> tailPositions;
 
   Position head = Position(0, 0);
   Position tail = Position(0, 0);
+  vector<Position> positions(10, Position(0, 0));
 
   tailPositions.insert("0,0");
 
@@ -62,9 +63,12 @@ int main()
   {
     for (int i = 1; i <= spaces; i++)
     {
-      head.move(direction);
-      tail.follow(head);
-      addTailPosition(tail.row, tail.col, tailPositions);
+      positions[0].move(direction);
+      for (int i = 1; i < positions.size(); i++)
+      {
+        positions[i].follow(positions[i - 1]);
+      }
+      addTailPosition(positions.back().row, positions.back().col, tailPositions);
     }
   }
 
