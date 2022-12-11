@@ -8,7 +8,8 @@
     "filesystem": "cpp",
     "unordered_map": "cpp",
     "set": "cpp",
-    "queue": "cpp"
+    "queue": "cpp",
+    "regex": "cpp"
   },
   "cSpell.words": [
     "leetcode"
