@@ -24,6 +24,12 @@ sudo mkdir bits
 ```
 now go into bits and add [stdc++.h](https://github.com/gcc-mirror/gcc/blob/master/libstdc%2B%2B-v3/include/precompiled/stdc%2B%2B.h)
 
+run the following command in the same directory as the stdc++.h file. Note that the path you are copying should match the 'include' path
+you retrieved earlier.
+```
+sudo cp stdc++.h /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/bits/stdc++.h
+```
+
 note there where a few issues with the __cplusplus preprocessor macro so a had to move a few of the libraries around but once I did
 that it seemed to be working fine.
 
