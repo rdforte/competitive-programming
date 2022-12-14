@@ -2,20 +2,26 @@
 
 using namespace std;
 
+typedef uint64_t ll;
+
 struct Monkey
 {
 private:
-  vector<int> items;
+  vector<ll> items;
   string oper;
   string additionMultiplier;
-  int devisor;
+  ll devisor;
   int monkeyTrue;
   int monkeyFalse;
+  ll worryLevel;
 
 public:
-  Monkey() {}
+  Monkey(ll w)
+  {
+    worryLevel = w;
+  }
 
-  void addItem(int item)
+  void addItem(ll item)
   {
     items.push_back(item);
   }
@@ -34,28 +40,30 @@ public:
     additionMultiplier = am;
   }
 
-  int applyOperationAndRetrieveItem()
+  ll applyOperationAndRetrieveItem()
   {
     if (items.size() > 0)
     {
-      int item = items[items.size() - 1];
+      ll item = items[items.size() - 1];
       items.pop_back();
 
       int multiplyAddBy = additionMultiplier == "old" ? item : stoi(additionMultiplier);
 
       if (oper == "+")
       {
-        return (item + multiplyAddBy) / 3;
+        ll itemAdd = (item + multiplyAddBy);
+        return worryLevel == 0 ? itemAdd : itemAdd / worryLevel;
       }
       else if (oper == "*")
       {
-        return (item * multiplyAddBy) / 3;
+        ll itemMultiply = (item * multiplyAddBy);
+        return worryLevel == 0 ? itemMultiply : itemMultiply / worryLevel;
       }
     }
     return 0;
   }
 
-  void setDevisor(int d)
+  void setDevisor(ll d)
   {
     devisor = d;
   }
@@ -70,7 +78,7 @@ public:
     monkeyFalse = mf;
   }
 
-  int passToMonkey(int itemWorry)
+  int passToMonkey(ll itemWorry)
   {
     return itemWorry % devisor == 0 ? monkeyTrue : monkeyFalse;
   }
@@ -78,15 +86,16 @@ public:
 
 int main()
 {
-  freopen("input.txt", "r", stdin);
-  freopen("q1output.txt", "w", stdout);
+  freopen("test.txt", "r", stdin);
+  freopen("q2output.txt", "w", stdout);
 
   vector<Monkey> monkeys;
 
   string monkeyIndex;
   while (getline(cin, monkeyIndex))
   {
-    Monkey monkey = Monkey();
+    int worryLevel = 0;
+    Monkey monkey = Monkey(worryLevel);
 
     // Add items to monkey
     string itemsInput;
@@ -146,14 +155,15 @@ int main()
     monkeys.push_back(monkey);
   }
 
-  vector<int> monkeyInspect(monkeys.size(), 0);
-  for (int round = 0; round < 20; round++)
+  vector<ll> monkeyInspect(monkeys.size(), 0);
+  for (int round = 0; round < 1000; round++)
   {
     for (int i = 0; i < monkeys.size(); i++)
     {
       while (monkeys[i].hasNextItem())
       {
-        int itemWithWorry = monkeys[i].applyOperationAndRetrieveItem();
+        ll itemWithWorry = monkeys[i].applyOperationAndRetrieveItem();
+        cout << itemWithWorry << "\n";
         int monkeyIndex = monkeys[i].passToMonkey(itemWithWorry);
         monkeys[monkeyIndex].addItem(itemWithWorry);
         monkeyInspect[i]++;
@@ -162,6 +172,17 @@ int main()
   }
 
   sort(monkeyInspect.begin(), monkeyInspect.end(), greater<int>());
+  cout << "\n";
+  cout << "\n";
+  cout << "\n";
+  cout << "\n";
 
-  cout << (monkeyInspect[0] * monkeyInspect[1]);
+  cout << (long long)monkeyInspect[0] << "\n";
+  cout << (long long)monkeyInspect[1] << "\n";
+  cout << (long long)monkeyInspect[2] << "\n";
+  cout << (long long)monkeyInspect[3] << "\n";
+  cout << "\n";
+  cout << "\n";
+
+  cout << (long long)(monkeyInspect[0] * monkeyInspect[1]);
 }
