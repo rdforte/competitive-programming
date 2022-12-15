@@ -2,7 +2,7 @@
 
 using namespace std;
 
-typedef uint64_t ll;
+typedef long long ll;
 
 struct Monkey
 {
@@ -13,12 +13,11 @@ private:
   ll devisor;
   int monkeyTrue;
   int monkeyFalse;
-  ll worryLevel;
+  int operationMod;
 
 public:
-  Monkey(ll w)
+  Monkey()
   {
-    worryLevel = w;
   }
 
   void addItem(ll item)
@@ -42,25 +41,21 @@ public:
 
   ll applyOperationAndRetrieveItem()
   {
-    if (items.size() > 0)
+    ll item = items[items.size() - 1];
+    items.pop_back();
+
+    int multiplyAddBy = additionMultiplier == "old" ? item : stoi(additionMultiplier);
+
+    ll operatedItem;
+    if (oper == "+")
     {
-      ll item = items[items.size() - 1];
-      items.pop_back();
-
-      int multiplyAddBy = additionMultiplier == "old" ? item : stoi(additionMultiplier);
-
-      if (oper == "+")
-      {
-        ll itemAdd = (item + multiplyAddBy);
-        return worryLevel == 0 ? itemAdd : itemAdd / worryLevel;
-      }
-      else if (oper == "*")
-      {
-        ll itemMultiply = (item * multiplyAddBy);
-        return worryLevel == 0 ? itemMultiply : itemMultiply / worryLevel;
-      }
+      operatedItem = (item + multiplyAddBy);
     }
-    return 0;
+    else if (oper == "*")
+    {
+      operatedItem = (item * multiplyAddBy);
+    }
+    return operatedItem % operationMod;
   }
 
   void setDevisor(ll d)
@@ -82,20 +77,26 @@ public:
   {
     return itemWorry % devisor == 0 ? monkeyTrue : monkeyFalse;
   }
+
+  void setOperationMod(ll mod)
+  {
+    operationMod = mod;
+  }
 };
 
 int main()
 {
-  freopen("test.txt", "r", stdin);
+  freopen("input.txt", "r", stdin);
   freopen("q2output.txt", "w", stdout);
 
   vector<Monkey> monkeys;
+  ll operationMod = 1;
 
   string monkeyIndex;
   while (getline(cin, monkeyIndex))
   {
     int worryLevel = 0;
-    Monkey monkey = Monkey(worryLevel);
+    Monkey monkey = Monkey();
 
     // Add items to monkey
     string itemsInput;
@@ -133,8 +134,8 @@ int main()
     smatch devisorMatch;
     getline(cin, devisorInput);
     regex_search(devisorInput, devisorMatch, regex("[0-9]+"));
-    monkey.setDevisor(stoi(devisorMatch.str()));
-    // cout << monkey.devisor << "\n";
+    monkey.setDevisor((ll)stoi(devisorMatch.str()));
+    operationMod *= (ll)stoi(devisorMatch.str());
 
     // Add the pass to monkey true
     string monkeyTrueInput;
@@ -155,15 +156,19 @@ int main()
     monkeys.push_back(monkey);
   }
 
+  for (int i = 0; i < monkeys.size(); i++)
+  {
+    monkeys[i].setOperationMod(operationMod);
+  }
+
   vector<ll> monkeyInspect(monkeys.size(), 0);
-  for (int round = 0; round < 1000; round++)
+  for (int round = 0; round < 10000; round++)
   {
     for (int i = 0; i < monkeys.size(); i++)
     {
       while (monkeys[i].hasNextItem())
       {
         ll itemWithWorry = monkeys[i].applyOperationAndRetrieveItem();
-        cout << itemWithWorry << "\n";
         int monkeyIndex = monkeys[i].passToMonkey(itemWithWorry);
         monkeys[monkeyIndex].addItem(itemWithWorry);
         monkeyInspect[i]++;
@@ -172,17 +177,6 @@ int main()
   }
 
   sort(monkeyInspect.begin(), monkeyInspect.end(), greater<int>());
-  cout << "\n";
-  cout << "\n";
-  cout << "\n";
-  cout << "\n";
-
-  cout << (long long)monkeyInspect[0] << "\n";
-  cout << (long long)monkeyInspect[1] << "\n";
-  cout << (long long)monkeyInspect[2] << "\n";
-  cout << (long long)monkeyInspect[3] << "\n";
-  cout << "\n";
-  cout << "\n";
 
   cout << (long long)(monkeyInspect[0] * monkeyInspect[1]);
 }
