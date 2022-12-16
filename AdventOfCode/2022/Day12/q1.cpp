@@ -44,10 +44,19 @@ struct Input
 // node weight, with (row, col)
 typedef pair<int, pair<int, int>> Node;
 
+bool canMoveToNextMountain(vector<vector<int>> &nodeWeights, vector<vector<int>> &mountainHeights, Node node, int row, int col)
+{
+  int r = node.second.first;
+  int c = node.second.second;
+  int curHeight = mountainHeights[r][c];
+  char nextHeight = mountainHeights[row][col];
+  return (nextHeight <= curHeight + 1) && ((node.first + 1) < nodeWeights[row][col]);
+};
+
 int main()
 {
-  freopen("test.txt", "r", stdin);
-  freopen("q1output", "w", stdout);
+  freopen("input.txt", "r", stdin);
+  freopen("q1output.txt", "w", stdout);
 
   Input input = Input();
   auto heightMap = input.heightMap;
@@ -59,7 +68,6 @@ int main()
   priority_queue<Node, vector<Node>, greater<Node>> q;
 
   q.push({0, S});
-  // processed[S.first][S.second] = true;
 
   while (!q.empty())
   {
@@ -74,34 +82,54 @@ int main()
 
     int curHeight = heightMap[row][col];
 
-    cout << curHeight << "\n";
+    cout << (char)curHeight << " : " << mountainWeight[row][col] << " -----------------\n";
 
     // Up
-    if (row + 1 < heightMap.size())
+    int rowUp = row + 1;
+    if (rowUp < heightMap.size())
     {
-      char upHeight = heightMap[row + 1][col];
-      // check is within range of 1 height
-      if ((upHeight - curHeight) == 0 || (upHeight - curHeight) == 1)
+      cout << (char)heightMap[rowUp][col] << " : ";
+      if (canMoveToNextMountain(mountainWeight, heightMap, node, rowUp, col))
       {
-        // check if shorter path
-        if (node.first + 1 < mountainWeight[row + 1][col])
-        {
-          mountainWeight[row + 1][col] = node.first + 1;
-          q.push({mountainWeight[row + 1][col], {row + 1, col}});
-        }
+        mountainWeight[rowUp][col] = node.first + 1;
+        q.push({mountainWeight[rowUp][col], {rowUp, col}});
       }
     }
     // Down
-    if (row - 1 >= 0)
+    int rowDown = row - 1;
+    if (rowDown >= 0)
     {
+      cout << (char)heightMap[rowDown][col] << " : ";
+      if (canMoveToNextMountain(mountainWeight, heightMap, node, rowDown, col))
+      {
+        mountainWeight[rowDown][col] = node.first + 1;
+        q.push({mountainWeight[rowDown][col], {rowDown, col}});
+      }
     }
     // Left
-    if (row - 1 >= 0)
+    int colLeft = col - 1;
+    if (colLeft >= 0)
     {
+      cout << (char)heightMap[row][colLeft] << " : ";
+      if (canMoveToNextMountain(mountainWeight, heightMap, node, row, colLeft))
+      {
+        mountainWeight[row][colLeft] = node.first + 1;
+        q.push({mountainWeight[row][colLeft], {row, colLeft}});
+      }
     }
     // Right
-    if (row + 1 < heightMap[0].size())
+    int colRight = col + 1;
+    if (colRight < heightMap[0].size())
     {
+      cout << (char)heightMap[row][colRight];
+      if (canMoveToNextMountain(mountainWeight, heightMap, node, row, colRight))
+      {
+        mountainWeight[row][colRight] = node.first + 1;
+        q.push({mountainWeight[row][colRight], {row, colRight}});
+      }
     }
+    cout << "\n\n";
   }
+
+  cout << mountainWeight[E.first][E.second]; // 517
 }
