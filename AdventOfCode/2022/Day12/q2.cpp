@@ -2,6 +2,9 @@
 
 using namespace std;
 
+// node weight, with (row, col)
+typedef pair<int, pair<int, int>> Node;
+
 struct Input
 {
   vector<vector<int>> heightMap;
@@ -35,18 +38,6 @@ struct Input
       row++;
     }
   }
-};
-
-// node weight, with (row, col)
-typedef pair<int, pair<int, int>> Node;
-
-bool canMoveToNextMountain(vector<vector<int>> &nodeWeights, vector<vector<int>> &mountainHeights, Node node, int row, int col)
-{
-  int r = node.second.first;
-  int c = node.second.second;
-  int curHeight = mountainHeights[r][c];
-  char nextHeight = mountainHeights[row][col];
-  return (nextHeight <= curHeight + 1) && ((node.first + 1) < nodeWeights[row][col]);
 };
 
 vector<pair<int, int>> findNeighbours(int row, int col, vector<vector<int>> &heightMap)
