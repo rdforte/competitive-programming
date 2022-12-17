@@ -5,7 +5,6 @@ using namespace std;
 struct Input
 {
   vector<vector<int>> heightMap;
-  vector<vector<int>> mountainWeight;
   vector<vector<bool>> processed;
   pair<int, int> S;
   pair<int, int> E;
@@ -17,22 +16,19 @@ struct Input
     while (getline(cin, s))
     {
       heightMap.push_back({});
-      mountainWeight.push_back({});
       processed.push_back({});
       for (int i = 0; i < s.size(); i++)
       {
         heightMap.back().push_back(s[i]);
-        mountainWeight.back().push_back(INT_MAX);
         processed.back().push_back(false);
         if (s[i] == 'S')
         {
           S = {row, i};
-          heightMap.back().back() = (int)'a' - 1;
-          mountainWeight.back().back() = 0;
+          heightMap.back().back() = (int)'a';
         }
         if (s[i] == 'E')
         {
-          heightMap.back().back() = (int)'z' + 1;
+          heightMap.back().back() = (int)'z';
           E = {row, i};
         }
       }
@@ -53,6 +49,31 @@ bool canMoveToNextMountain(vector<vector<int>> &nodeWeights, vector<vector<int>>
   return (nextHeight <= curHeight + 1) && ((node.first + 1) < nodeWeights[row][col]);
 };
 
+vector<pair<int, int>> findNeighbours(int row, int col, vector<vector<int>> &heightMap)
+{
+  vector<pair<int, int>> neighbours = {
+      {1, 0},
+      {-1, 0},
+      {0, 1},
+      {0, -1},
+  };
+  vector<pair<int, int>> neighboursWithinHeight;
+  for (auto n : neighbours)
+  {
+    int r = row + n.first;
+    int c = col + n.second;
+    if (not(r >= 0 and r < heightMap.size() and c >= 0 and c < heightMap[row].size()))
+      continue;
+
+    cout << "surrounding :" << r << "," << c << " : " << (char)heightMap[r][c] << "\n";
+
+    if (heightMap[r][c] - heightMap[row][col] <= 1)
+      neighboursWithinHeight.push_back({r, c});
+  }
+
+  return neighboursWithinHeight;
+};
+
 int main()
 {
   freopen("input.txt", "r", stdin);
@@ -60,12 +81,28 @@ int main()
 
   Input input = Input();
   auto heightMap = input.heightMap;
-  auto mountainWeight = input.mountainWeight;
   auto processed = input.processed;
   auto S = input.S;
   auto E = input.E;
 
-  priority_queue<Node, vector<Node>, greater<Node>> q;
+  for (auto i : heightMap)
+  {
+    for (auto j : i)
+    {
+      cout << (char)j;
+    }
+    cout << "\n";
+  }
+  cout << "\n\n";
+
+  int steps = 0;
+
+  auto cmp = [](Node left, Node right)
+  {
+    return left.first > right.first;
+  };
+
+  priority_queue<Node, vector<Node>, decltype(cmp)> q(cmp);
 
   q.push({0, S});
 
@@ -82,54 +119,22 @@ int main()
 
     int curHeight = heightMap[row][col];
 
-    cout << (char)curHeight << " : " << mountainWeight[row][col] << " -----------------\n";
+    cout << (char)curHeight << " : " << row << "," << col << " : " << node.first << " -----------------\n";
 
-    // Up
-    int rowUp = row + 1;
-    if (rowUp < heightMap.size())
+    if (row == E.first and col == E.second)
     {
-      cout << (char)heightMap[rowUp][col] << " : ";
-      if (canMoveToNextMountain(mountainWeight, heightMap, node, rowUp, col))
-      {
-        mountainWeight[rowUp][col] = node.first + 1;
-        q.push({mountainWeight[rowUp][col], {rowUp, col}});
-      }
+      steps = node.first;
+      break;
     }
-    // Down
-    int rowDown = row - 1;
-    if (rowDown >= 0)
+
+    for (auto n : findNeighbours(row, col, heightMap))
     {
-      cout << (char)heightMap[rowDown][col] << " : ";
-      if (canMoveToNextMountain(mountainWeight, heightMap, node, rowDown, col))
-      {
-        mountainWeight[rowDown][col] = node.first + 1;
-        q.push({mountainWeight[rowDown][col], {rowDown, col}});
-      }
+      cout << (char)heightMap[n.first][n.second] << ", ";
+      q.push({node.first + 1, n});
     }
-    // Left
-    int colLeft = col - 1;
-    if (colLeft >= 0)
-    {
-      cout << (char)heightMap[row][colLeft] << " : ";
-      if (canMoveToNextMountain(mountainWeight, heightMap, node, row, colLeft))
-      {
-        mountainWeight[row][colLeft] = node.first + 1;
-        q.push({mountainWeight[row][colLeft], {row, colLeft}});
-      }
-    }
-    // Right
-    int colRight = col + 1;
-    if (colRight < heightMap[0].size())
-    {
-      cout << (char)heightMap[row][colRight];
-      if (canMoveToNextMountain(mountainWeight, heightMap, node, row, colRight))
-      {
-        mountainWeight[row][colRight] = node.first + 1;
-        q.push({mountainWeight[row][colRight], {row, colRight}});
-      }
-    }
+
     cout << "\n\n";
   }
 
-  cout << mountainWeight[E.first][E.second]; // 517
+  cout << steps; // 517
 }
