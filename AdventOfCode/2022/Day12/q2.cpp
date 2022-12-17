@@ -75,7 +75,7 @@ vector<pair<int, int>> findNeighbours(int row, int col, vector<vector<int>> &hei
 int main()
 {
   freopen("input.txt", "r", stdin);
-  freopen("q1output.txt", "w", stdout);
+  freopen("q2output.txt", "w", stdout);
 
   Input input = Input();
   auto heightMap = input.heightMap;
@@ -115,7 +115,14 @@ int main()
 
     for (auto n : findNeighbours(row, col, heightMap))
     {
-      q.push({node.first + 1, n});
+      if ((char)heightMap[n.first][n.second] == 'a')
+      {
+        q.push({node.first, n});
+      }
+      else
+      {
+        q.push({node.first + 1, n});
+      }
     }
   }
 
