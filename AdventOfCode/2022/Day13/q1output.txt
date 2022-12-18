@@ -1,0 +1,39 @@
+left in: => [[1],[1,[5]]]
+right in: => [[1],[1,[4]]]
+left: [
+right: [
+STEP IN ---------
+left in: => [1],[1,[5]]]
+right in: => [1],[1,[4]]]
+left: [
+right: [
+STEP IN ---------
+left in: => 1],[1,[5]]]
+right in: => 1],[1,[4]]]
+left: 1
+right: 1
+left: ]
+right: ]
+STEP OUT --------
+left: ,
+right: ,
+left: [
+right: [
+STEP IN ---------
+left in: => 1,[5]]]
+right in: => 1,[4]]]
+left: 1
+right: 1
+left: ,
+right: ,
+left: [
+right: [
+STEP IN ---------
+left in: => 5]]]
+right in: => 4]]]
+left: 5
+right: 4
+STEP OUT --------
+STEP OUT --------
+STEP OUT --------
+false
