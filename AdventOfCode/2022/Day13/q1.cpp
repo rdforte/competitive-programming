@@ -2,22 +2,24 @@
 
 using namespace std;
 
-pair<bool, pair<int, int>> recursiveComparisonIsInOrder(string left, string right, int l, int r)
+pair<int, pair<int, int>> recursiveComparisonIsInOrder(string left, string right, int l, int r)
 {
-  cout << "left in: => " << left << "\n";
-  cout << "right in: => " << right << "\n";
+  // cout << "left in: => " << left << "\n";
+  // cout << "right in: => " << right << "\n";
   for (int li = l, ri = r; li < left.size() and ri < right.size();)
   {
-    cout << "left: " << left[li] << "\n";
-    cout << "right: " << right[ri] << "\n";
+    // cout << "left: " << left[li] << "\n";
+    // cout << "right: " << right[ri] << "\n";
+    if (left[li] == ']' and right[ri] == ']')
+      return {0, {li + 1, ri + 1}};
     if (left[li] == ']')
-      return {true, {li + 1, ri + 1}};
+      return {1, {li + 1, ri + 1}};
     if (right[ri] == ']')
-      return {false, {li + 1, ri + 1}};
+      return {-1, {li + 1, ri + 1}};
 
     if (isdigit(left[li]) and isdigit(right[ri]))
     {
-      int leftDigit = stoi(to_string(left[ri])), rightDigit = stoi(to_string(right[ri]));
+      int leftDigit = stoi(to_string(left[li])), rightDigit = stoi(to_string(right[ri]));
       if (leftDigit == rightDigit)
       {
         li++;
@@ -31,42 +33,69 @@ pair<bool, pair<int, int>> recursiveComparisonIsInOrder(string left, string righ
         {
           li++;
         }
+        return {1, {0, 0}};
       }
 
-      return {leftDigit < rightDigit, {li + 1, ri + 1}};
+      return {-1, {0, 0}};
     }
 
-    if (left[li] == '[' or right[ri] == '[')
+    if (left[li] == '[' and right[ri] == '[')
     {
-      cout << "STEP IN ---------"
-           << "\n";
+      // cout << "STEP IN ---------"
+      //      << "\n";
       auto val = recursiveComparisonIsInOrder(left.substr(li + 1, left.size() - li - 1), right.substr(ri + 1, right.size() - ri - 1), li, ri);
-      cout << "STEP OUT --------"
-           << "\n";
-      if (!val.first)
+      // cout << "STEP OUT --------"
+      //      << "\n";
+      if (val.first != 0)
         return val;
       li += val.second.first;
       ri += val.second.second;
+    }
+
+    if (left[li] == '[' and isdigit(right[ri]))
+    {
+      li++;
+      if (stoi(to_string(left[li])) == stoi(to_string(right[ri])))
+      {
+        while (left[li] != ']')
+        {
+          li++;
+        }
+      }
+      else if (stoi(to_string(left[li])) <= stoi(to_string(right[ri])))
+      {
+        return {1, {0, 0}};
+      }
+      else
+      {
+        return {-1, {0, 0}};
+      }
+    }
+
+    if (isdigit(left[li]) and right[ri] == '[')
+    {
+      ri++;
+      if (stoi(to_string(left[li])) == stoi(to_string(right[ri])))
+      {
+        while (right[ri] != ']')
+        {
+          ri++;
+        }
+      }
+      else if (stoi(to_string(left[li])) <= stoi(to_string(right[ri])))
+      {
+        return {1, {0, 0}};
+      }
+      else
+      {
+        return {-1, {0, 0}};
+      }
     }
     li++;
     ri++;
   }
 
-  return {true, {0, 0}};
-}
-
-string addBracketsToString(string ogString, int i)
-{
-  string newString = ogString.substr(0, i) + "[";
-  int iterator = i;
-  while (iterator < ogString.size() and ogString[iterator] != ',' and ogString[iterator] != ']')
-  {
-    newString += ogString[iterator];
-    iterator++;
-  }
-  newString += "]" + ogString.substr(iterator, ogString.size() - 1);
-
-  return newString;
+  return {1, {0, 0}};
 }
 
 int main()
@@ -79,29 +108,15 @@ int main()
 
   string left;
   string right;
-  while (getline(cin, left))
+  while (getline(cin, left) and getline(cin, right))
   {
-    getline(cin, right);
-    cout << boolalpha;
-    for (int l = 0, r = 0; l < left.size() or r < left.size();)
-    {
-      if (left[l] == '[' and isdigit(right[r]))
-      {
-        right = addBracketsToString(right, r);
-      }
-      if (right[r] == '[' and isdigit(left[l]))
-      {
-        left = addBracketsToString(left, l);
-      }
-      l++;
-      r++;
-    }
-    cout << left << "\n";
-    cout << right << "\n";
-    if (recursiveComparisonIsInOrder(left, right, 0, 0).first)
+    int result = recursiveComparisonIsInOrder(left, right, 0, 0).first;
+    cout << "--------------> " << result << "\n";
+    if (result == 1)
     {
       count += index;
     }
+    // cout << recursiveComparisonIsInOrder(left, right, 0, 0).first;
     index++;
     cin.ignore();
   }
