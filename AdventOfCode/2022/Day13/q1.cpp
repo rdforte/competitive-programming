@@ -1,101 +1,55 @@
 #include <bits/stdc++.h>
+#include "rapidjson/document.h" // https://rapidjson.org/md_doc_tutorial.html installed via Homebrew.
 
 using namespace std;
+using namespace rapidjson;
 
-pair<int, pair<int, int>> recursiveComparisonIsInOrder(string left, string right, int l, int r)
+int compare(Value left, Value right)
 {
-  // cout << "left in: => " << left << "\n";
-  // cout << "right in: => " << right << "\n";
-  for (int li = l, ri = r; li < left.size() and ri < right.size();)
+  for (SizeType i = 0; i < max(left.Size(), right.Size()); i++)
   {
-    // cout << "left: " << left[li] << "\n";
-    // cout << "right: " << right[ri] << "\n";
-    if (left[li] == ']' and right[ri] == ']')
-      return {0, {li + 1, ri + 1}};
-    if (left[li] == ']')
-      return {1, {li + 1, ri + 1}};
-    if (right[ri] == ']')
-      return {-1, {li + 1, ri + 1}};
+    if (i >= left.Size())
+      return 1;
+    if (i >= right.Size())
+      return -1;
 
-    if (isdigit(left[li]) and isdigit(right[ri]))
+    int res = 0;
+
+    if (left[i].IsArray() and right[i].IsNumber())
     {
-      int leftDigit = stoi(to_string(left[li])), rightDigit = stoi(to_string(right[ri]));
-      if (leftDigit == rightDigit)
-      {
-        li++;
-        ri++;
+      Document document;
+      Document::AllocatorType &allocator = document.GetAllocator();
+      Value arrVal(kArrayType);
+      arrVal.PushBack(Value().SetInt(right[i].GetInt()), allocator);
+      res = compare(left[i].GetArray(), arrVal.GetArray());
+    }
+    else if (left[i].IsNumber() and right[i].IsArray())
+    {
+      Document document;
+      Document::AllocatorType &allocator = document.GetAllocator();
+      Value arrVal(kArrayType);
+      arrVal.PushBack(Value().SetInt(left[i].GetInt()), allocator);
+      res = compare(arrVal.GetArray(), right[i].GetArray());
+    }
+    else if (left[i].IsArray() && right[i].IsArray())
+    {
+      res = compare(left[i].GetArray(), right[i].GetArray());
+    }
+    else
+    {
+      int leftNum = left[i].GetInt();
+      int rightNum = right[i].GetInt();
+      if (leftNum == rightNum)
         continue;
-      }
-
-      if (leftDigit < rightDigit)
-      {
-        while (left[li] != ']')
-        {
-          li++;
-        }
-        return {1, {0, 0}};
-      }
-
-      return {-1, {0, 0}};
+      return leftNum < rightNum ? 1 : -1;
     }
 
-    if (left[li] == '[' and right[ri] == '[')
-    {
-      // cout << "STEP IN ---------"
-      //      << "\n";
-      auto val = recursiveComparisonIsInOrder(left.substr(li + 1, left.size() - li - 1), right.substr(ri + 1, right.size() - ri - 1), li, ri);
-      // cout << "STEP OUT --------"
-      //      << "\n";
-      if (val.first != 0)
-        return val;
-      li += val.second.first;
-      ri += val.second.second;
-    }
-
-    if (left[li] == '[' and isdigit(right[ri]))
-    {
-      li++;
-      if (stoi(to_string(left[li])) == stoi(to_string(right[ri])))
-      {
-        while (left[li] != ']')
-        {
-          li++;
-        }
-      }
-      else if (stoi(to_string(left[li])) <= stoi(to_string(right[ri])))
-      {
-        return {1, {0, 0}};
-      }
-      else
-      {
-        return {-1, {0, 0}};
-      }
-    }
-
-    if (isdigit(left[li]) and right[ri] == '[')
-    {
-      ri++;
-      if (stoi(to_string(left[li])) == stoi(to_string(right[ri])))
-      {
-        while (right[ri] != ']')
-        {
-          ri++;
-        }
-      }
-      else if (stoi(to_string(left[li])) <= stoi(to_string(right[ri])))
-      {
-        return {1, {0, 0}};
-      }
-      else
-      {
-        return {-1, {0, 0}};
-      }
-    }
-    li++;
-    ri++;
+    if (res == 0)
+      continue;
+    return res;
   }
 
-  return {1, {0, 0}};
+  return 0;
 }
 
 int main()
@@ -110,17 +64,21 @@ int main()
   string right;
   while (getline(cin, left) and getline(cin, right))
   {
-    int result = recursiveComparisonIsInOrder(left, right, 0, 0).first;
-    cout << "--------------> " << result << "\n";
-    if (result == 1)
+    const char *leftCString = left.c_str();
+    const char *rightCString = right.c_str();
+
+    Document leftDoc;
+    leftDoc.Parse(leftCString);
+    Document rightDoc;
+    rightDoc.Parse(rightCString);
+
+    if (compare(leftDoc.GetArray(), rightDoc.GetArray()) == 1)
     {
       count += index;
     }
-    // cout << recursiveComparisonIsInOrder(left, right, 0, 0).first;
     index++;
     cin.ignore();
   }
 
-  cout << "\n\n\n"
-       << count;
+  cout << "ANSWER: " << count;
 }
