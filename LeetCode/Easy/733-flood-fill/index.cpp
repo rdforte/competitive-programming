@@ -1,33 +1,32 @@
-#include "../../../stdc++.h"
+#include <bits/stdc++.h>
 
 using namespace std;
 
-vector<vector<int>> floodFill(vector<vector<int>> &image, int sr, int sc, int color)
+typedef vector<vector<int>> vvi;
+
+class Solution
 {
-    if (image[sr][sc] == color)
-        return image;
-
-    dfs(image, sr, sc, color, image[sr][sc]);
-
+public:
+  vvi floodFill(vvi &image, int sr, int sc, int color)
+  {
+    dfs(image, sr, sc, image[sr][sc], color);
     return image;
-}
+  }
 
-void dfs(vector<vector<int>> &image, int sr, int sc, int newColor, int nodeColor)
-{
-    if (sr >= image.size() || sr < 0 || sc >= image[image.size() - 1].size() || sc < 0)
-        return;
+private:
+  void dfs(vvi &image, int sr, int sc, int ogColor, int newColor)
+  {
+    if (!(sr >= 0 and sr < image.size()) or !(sc >= 0 and sc < image[0].size()))
+      return;
 
-    if (image[sr][sc] != nodeColor)
-        return;
+    if (image[sr][sc] != ogColor or image[sr][sc] == newColor)
+      return;
 
     image[sr][sc] = newColor;
 
-    dfs(image, sr, sc - 1, newColor, nodeColor);
-    dfs(image, sr - 1, sc, newColor, nodeColor);
-    dfs(image, sr, sc + 1, newColor, nodeColor);
-    dfs(image, sr + 1, sc, newColor, nodeColor);
-}
-
-int main()
-{
-}
+    dfs(image, sr - 1, sc, ogColor, newColor);
+    dfs(image, sr + 1, sc, ogColor, newColor);
+    dfs(image, sr, sc - 1, ogColor, newColor);
+    dfs(image, sr, sc + 1, ogColor, newColor);
+  }
+};
