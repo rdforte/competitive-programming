@@ -1,3 +1,4 @@
+// https://leetcode.com/problems/first-bad-version/?envType=study-plan&id=level-1
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -7,6 +8,7 @@ bool isBadVersion(int version)
   return version >= 3;
 }
 
+// runtime O(log n) through utilization of binary search, spacetime O(n) as call-stack may equal n.
 class Solution
 {
 public:
