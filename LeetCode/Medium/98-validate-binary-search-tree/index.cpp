@@ -17,20 +17,16 @@ bool dfsValidBST(TreeNode *root, long lower, long upper)
   if (root == nullptr)
     return true;
 
-  if (root->val >= upper || root->val <= lower)
+  if (root->val >= upper or root->val <= lower)
     return false;
 
   bool leftValid = dfsValidBST(root->left, lower, root->val);
   bool rightValid = dfsValidBST(root->right, root->val, upper);
 
-  return leftValid && rightValid;
+  return leftValid and rightValid;
 }
 
 bool isValidBST(TreeNode *root)
 {
   return dfsValidBST(root, LLONG_MIN, LLONG_MAX);
-}
-
-int main()
-{
 }
