@@ -2,6 +2,13 @@
 
 using namespace std;
 
+/**
+ * When completing this question if we look at the binary search tree example in the assets folder we can see that each
+ * time we look at a node we find ourselves saying "it must be greater than A but less than B" this then leads us to
+ * the assumption that the node must be within a Range. We then must keep track of the range at each traversal to see
+ * if the node adheres to the rules of a Binary Search Tree.
+ */
+
 struct TreeNode
 {
   int val;
