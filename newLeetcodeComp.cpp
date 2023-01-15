@@ -26,7 +26,7 @@ int main()
     {
 
       file.open("./LeetCode/Competitions/" + directory + "/" + "q" + to_string(i) + ".cpp");
-      file << "#include \"../../../stdc++.h\"\n";
+      file << "#include <bits/stdc++.h>\n";
       file << "\n";
       file << "using namespace std;\n";
       file << "\n";

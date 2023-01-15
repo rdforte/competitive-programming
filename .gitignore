@@ -6,5 +6,15 @@
 AdventOfCode/**/q1
 AdventOfCode/**/q2
 
+# ignore executables and degub output for leetcode comp
+LeetCode/Competitions/*/q1
+LeetCode/Competitions/*/q2
+LeetCode/Competitions/*/q3
+LeetCode/Competitions/*/q4
+LeetCode/Competitions/*/q1.dSYM
+LeetCode/Competitions/*/q2.dSYM
+LeetCode/Competitions/*/q3.dSYM
+LeetCode/Competitions/*/q4.dSYM
+
 # ignore degub output
 **/index.dSYM
