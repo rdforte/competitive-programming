@@ -1,19 +1,35 @@
-#include "../../../stdc++.h"
+#include <bits/stdc++.h>
 
 using namespace std;
 
-vector<int> twoSum(vector<int> &nums, int target)
+class Solution
 {
-  unordered_map<int, int> mpp;
-
-  for (int i = 0; i < nums.size(); i++)
+public:
+  vector<int> twoSum(vector<int> &nums, int target)
   {
-    int secondNum = target - nums[i];
-    if (mpp.find(secondNum) != mpp.end())
-      return {mpp[secondNum], i};
+    unordered_map<int, int> numMap;
+    for (int i = 0; i < nums.size(); i++)
+    {
+      if (numMap.count(target - nums[i]) == 1)
+      {
+        return {numMap[target - nums[i]], i};
+      }
+      numMap[nums[i]] = i;
+    }
 
-    mpp[nums[i]] = i;
+    return {};
   }
+};
 
-  return {};
+int main()
+{
+  vector<int> nums{
+      2, 7, 11, 15};
+
+  auto sol = Solution().twoSum(nums, 9);
+
+  for (auto s : sol)
+  {
+    cout << s << ", ";
+  }
 }
