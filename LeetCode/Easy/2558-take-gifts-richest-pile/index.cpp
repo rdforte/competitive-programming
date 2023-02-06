@@ -1,7 +1,7 @@
-https : // leetcode.com/problems/take-gifts-from-the-richest-pile/description/
+// https : // leetcode.com/problems/take-gifts-from-the-richest-pile/description/
 #include <bits/stdc++.h>
 
-        using namespace std;
+using namespace std;
 
 class Solution
 {
