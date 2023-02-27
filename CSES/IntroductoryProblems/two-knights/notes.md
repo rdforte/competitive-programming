@@ -40,3 +40,20 @@ for example if g was 5:
 You can see that in the numerator we can cancel out the 3 * 2 * 1 and in the denominator we can also cancel this out.
 
 Now that we have all the combinations we need to figure out all the combinations for which the knights attack each other.
+
+If we can figure out all the combinations for which two knights attack each other then its just
+```
+total combinations - knight attack combinations
+```
+
+In order to work out how many combinations for when 2 knights attack each other within an n*n grid we can first identify
+how it is these two knights attack each other.
+![3x2](./assets/3x2.png) ![2x3](./assets/2x3.png)
+For each of the grids above we have a total of 2 combinations.
+
+Lets work out the mathematical formula for fitting the above grids into an n*n grid.
+
+(n-1)(n-2) is one
+(n-2)(n-1) is the other.
+
+We then have two combinations for each grid. This will give us the total knight positions.
