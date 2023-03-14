@@ -14,9 +14,9 @@ public:
     for (int i = 0; i < nums.size(); i++)
     {
       sum += nums[i];
-      mp[sum]++;
       if (mp.count(sum - k))
         count += mp[sum - k];
+      mp[sum]++;
     }
 
     return count;
