@@ -88,6 +88,7 @@
 #include <utility>
 #include <valarray>
 #include <vector>
+#include <unordered_set>
 
 #if __cplusplus >= 201103L
 #include <array>
@@ -186,7 +187,6 @@
 #include <typeindex>
 #include <type_traits>
 #include <unordered_map>
-#include <unordered_set>
 #endif
 
 #if __cplusplus >= 201402L
