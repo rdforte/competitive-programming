@@ -35,6 +35,10 @@ I would return 4 characters.
 
 Now what If I had an exact substring that matched my original substring.
 
+```
+Input: s = "leet", dictionary = ["leet"]
+```
+
 If I started at L I don't have the substring L so I move to E. I have to see if I have the substring L and LE now. I don't have
 that substring so I move to LEE and check to see if I have E, EE and LEE I don't have those substrings either so my total characters which I have left over at the moment
 is 3. 
