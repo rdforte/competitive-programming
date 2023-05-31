@@ -40,7 +40,8 @@ that substring so I move to LEE and check to see if I have E, EE and LEE I don't
 is 3. 
 
 I get to the letter T so i check for
-- 
+
+
 - T
 - ET
 - EET
