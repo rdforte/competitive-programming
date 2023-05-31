@@ -51,7 +51,7 @@ I get to the letter T so i check for
 - EET
 - LEET - I have a match now what?
 
-Ive used 4 characts here and my starting position is L right through to T. So i can negate all those characters used and say that at index 4 I've used as many characters as the index before letter T which is 0.
+Ive used 4 characts here and my starting position is L right through to T. So i can negate all those characters used and say that at index 4 I've used as many characters as the index before letter L which is 0.
 
 I can then repeat this process for longer strings and substrings.
 
