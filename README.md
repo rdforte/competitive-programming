@@ -35,3 +35,9 @@ that it seemed to be working fine.
 
 ### Note
 We use C++ 17 because LeetCode does not support C++ 20
+
+
+## DSA - Links
+### Arrays & Hashing
+- [EASY 217. Contains Duplicate](./LeetCode/Easy/217-contains-duplicate/index.cpp)
+- [EASY 242. Valid Anagram](./LeetCode/Easy/242-valid-anagram/index.cpp)
