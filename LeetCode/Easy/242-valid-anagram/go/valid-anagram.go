@@ -1,8 +1,6 @@
 package validAnagram
 
-import (
-	"sort"
-)
+import "sort"
 
 func IsAnagram(s string, t string) bool {
 	return sortStringAscending(s) == sortStringAscending(t)
