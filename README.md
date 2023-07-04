@@ -41,3 +41,7 @@ We use C++ 17 because LeetCode does not support C++ 20
 ### Arrays & Hashing
 - [EASY 217. Contains Duplicate](./LeetCode/Easy/217-contains-duplicate/index.cpp)
 - [EASY 242. Valid Anagram](./LeetCode/Easy/242-valid-anagram/index.cpp)
+
+## IntelliJ
+Sometimes the Vim keybindings clash with IntelliJ keybindings. We can resolve this by following:
+https://www.jetbrains.com/help/idea/using-product-as-the-vim-editor.html
