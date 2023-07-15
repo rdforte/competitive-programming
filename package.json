@@ -1,0 +1,15 @@
+{
+  "name": "competitive-programming",
+  "version": "1.0.0",
+  "description": "Contains my answers to problems solved on variouse competitive programming sites",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.6.1",
+    "prettier": "2.6.2"
+  }
+}

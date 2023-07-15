@@ -18,3 +18,5 @@ LeetCode/Competitions/*/q4.dSYM
 
 # ignore degub output
 **/index.dSYM
+
+node_modules
