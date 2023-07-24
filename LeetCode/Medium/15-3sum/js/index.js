@@ -1,39 +1,31 @@
 module.exports.threeSum = (nums) => {
-  const seen = Array(nums.length).fill(false);
-  const validComboIndexes = Array(nums.length).fill(false);
-  return calculateThreeSumRecursively(nums, seen, 1, 0, [], validComboIndexes);
-};
+  const n = nums.sort((a, b) => a - b);
+  const duplicates = new Set();
 
-const calculateThreeSumRecursively = (
-  nums,
-  seen,
-  level,
-  total,
-  perm,
-  validComboIndexes
-) => {
-  const permutations = [];
-  for (let i = 0; i < nums.length; i++) {
-    if (validComboIndexes[i] || seen[i]) {
-      continue;
-    }
+  const res = [];
 
-    seen[i] = true;
-    if (level === 3 && nums[i] + total === 0) {
-      permutations.push([...perm, nums[i]]);
-      validComboIndexes[i] = true;
+  for (let i = 0; i < n.length - 2; i++) {
+    const numI = n[i];
+    for (let l = i + 1, r = n.length - 1; l < r; ) {
+      const numL = n[l];
+      const numR = n[r];
+
+      const total = numI + numL + numR;
+
+      if (total === 0) {
+        if (!duplicates.has(`${numI}${numL}${numR}`)) {
+          res.push([numI, numL, numR]);
+        }
+        duplicates.add(`${numI}${numL}${numR}`);
+        l++;
+        r--;
+      } else if (total > 0) {
+        r--;
+      } else {
+        l++;
+      }
     }
-    const calculatedPerms = calculateThreeSumRecursively(
-      nums,
-      seen,
-      level + 1,
-      total + nums[i],
-      [...perm, nums[i]],
-      validComboIndexes
-    );
-    calculatedPerms.forEach((perm) => permutations.push(perm));
-    seen[i] = validComboIndexes[i];
   }
 
-  return permutations;
+  return res;
 };

@@ -16,6 +16,14 @@ it.each([
     input: [0, 0, 0],
     expectOutput: [[0, 0, 0]],
   },
+  {
+    input: [0, 0, 0, 0],
+    expectOutput: [[0, 0, 0]],
+  },
+  {
+    input: [-2, 0, 0, 2, 2],
+    expectOutput: [[-2, 0, 2]],
+  },
 ])(
   "should return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0",
   ({ input, expectOutput }) => {
