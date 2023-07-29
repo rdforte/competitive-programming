@@ -15,6 +15,8 @@ echo "" | gcc -xc - -v -E
 This will give you a large sum of output but what we want is to find where it uses the #include
 ![finding include](./assets/findingInclude.png)
 
+look for the one with `include` at the end.
+
 Once we have this lets go into that directory and make a new directory called __bits__
 ```
 cd /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include
