@@ -1,30 +1,40 @@
-module.exports.createRateLimiter = (bucketSize) => new RateLimiter(bucketSize);
+module.exports.createRateLimiter = (capacity, fillPerSecond) =>
+  new TokenBucket(capacity, fillPerSecond);
 
-class RateLimiter {
-  #bucket;
-  #timer;
-  #maxBucketSize;
+class TokenBucket {
+  #capacity;
+  #fillPerSecond;
+  #lastFilled;
+  #tokens;
 
-  constructor(bucketSize) {
-    this.#bucket = bucketSize;
-    this.#maxBucketSize = bucketSize;
+  constructor(capacity, fillPerSecond) {
+    this.#capacity = capacity;
+    this.#fillPerSecond = fillPerSecond;
+
+    this.#lastFilled = Date.now();
+    this.#tokens = capacity;
   }
 
-  addRequest() {
-    this.#bucket = Math.max(0, this.#bucket - 1);
+  take() {
+    this.#refill();
+    this.#tokens = Math.max(0, this.#tokens - 1);
   }
 
   exceededLimit() {
-    return this.#bucket === 0;
+    this.#refill();
+    return this.#tokens === 0;
   }
 
-  startRunRefillBucket(numTokens, refillRateMs) {
-    this.#timer = setInterval(() => {
-      this.#bucket = Math.min(this.#bucket + numTokens, this.#maxBucketSize);
-    }, refillRateMs);
-  }
+  #refill() {
+    const now = Date.now();
+    const elapsedTimeMs = now - this.#lastFilled;
+    const elapsedTimeSec = elapsedTimeMs / 1000;
+    const rate = elapsedTimeSec / this.#fillPerSecond;
 
-  stopRunRefillBucket() {
-    clearInterval(this.#timer);
+    this.#tokens = Math.min(
+      this.#capacity,
+      this.#tokens + Math.floor(rate * this.#capacity)
+    );
+    this.#lastFilled = now;
   }
 }
