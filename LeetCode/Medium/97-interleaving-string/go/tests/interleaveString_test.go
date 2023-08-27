@@ -6,12 +6,22 @@ import (
 	"testing"
 )
 
-func TestIsInterleave(t *testing.T) {
+func TestIsInterleaveTrue(t *testing.T) {
 	s1 := "aabcc"
 	s2 := "dbbca"
 	s3 := "aadbbcbcac"
 	isInterleave := interleave.IsInterleave(s1, s2, s3)
 	expected := true
+
+	assert.Equal(t, expected, isInterleave)
+}
+
+func TestIsInterleaveFalse(t *testing.T) {
+	s1 := "bbbbbabbbbabaababaaaabbababbaaabbabbaaabaaaaababbbababbbbbabbbbababbabaabababbbaabababababbbaaababaa"
+	s2 := "babaaaabbababbbabbbbaabaabbaabbbbaabaaabaababaaaabaaabbaaabaaaabaabaabbbbbbbbbbbabaaabbababbabbabaab"
+	s3 := "babbbabbbaaabbababbbbababaabbabaabaaabbbbabbbaaabbbaaaaabbbbaabbaaabababbaaaaaabababbababaababbababbbababbbbaaaabaabbabbaaaaabbabbaaaabbbaabaaabaababaababbaaabbbbbabbbbaabbabaabbbbabaaabbababbabbabbab"
+	isInterleave := interleave.IsInterleave(s1, s2, s3)
+	expected := false
 
 	assert.Equal(t, expected, isInterleave)
 }
