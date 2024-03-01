@@ -50,6 +50,15 @@ We use C++ 17 because LeetCode does not support C++ 20
 
 ## Tips
 
+Always suss out your constraints example graph question constraints:
+
+- `n == rooms.length`
+- `2 <= n <= 1000` the array length is between 2 and 1000
+- `0 <= rooms[i].length <= 1000` the adjacency list values have an array length between 0 and 1000
+- `1 <= sum(rooms[i].length) <= 3000`
+- `0 <= rooms[i][j] < n` the value in the adjacency list is always less than n
+- `All the values of rooms[i] are unique.` each value in the adjacency list for the node is unique
+
 ### Stacks
 
 A lot of parsing questions (valid parentheses, braces, parsing math expressions),
