@@ -68,3 +68,10 @@ Two common use cases:
 
 - Good for finding the top **K** elements.
 - Dijkstras algorithm for calculating the shortest path in weighted graphs.
+
+### Sliding Window
+
+- The condition for using the sliding window technique is the problem asks to find the `max/min` value for a function that calculates
+  the answer repeatedly for a set of `ranges` from the array.
+  Example: Given a binary array nums and an integer k, return the maximum number of `consecutive 1's` (consecutive 1's creates a range)
+  in the array if you can flip at most k 0's.
