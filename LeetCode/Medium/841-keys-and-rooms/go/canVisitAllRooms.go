@@ -3,7 +3,6 @@ package visitRooms
 func CanVisitAllRooms(rooms [][]int) bool {
 	stack := []int{}
 	stack = append(stack, rooms[0]...)
-	rooms[0] = []int{}
 	visited := make([]bool, len(rooms))
 	visited[0] = true
 
@@ -11,10 +10,13 @@ func CanVisitAllRooms(rooms [][]int) bool {
 		node := stack[len(stack)-1]
 		stack = stack[:len(stack)-1]
 
+		if visited[node] {
+			continue
+		}
+
 		visited[node] = true
 
 		stack = append(stack, rooms[node]...)
-		rooms[node] = []int{}
 	}
 
 	for _, v := range visited {
