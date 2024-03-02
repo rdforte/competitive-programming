@@ -89,3 +89,9 @@ Two common use cases:
 
 - Great for finding the shortest path in the graph.
 - Can be used with priority queue to form Dijkstras algorithm to find shortest path in weighted graph
+
+### Binary Search
+
+Although binary search algorithms are typically used to find one element in a sorted sequence, they have many other uses.
+You can apply a binary search to a result, for example. Say you wanted to determine the minimum square footage of office space needed to fit all a company's employees easily.
+The square footage is a consecutive number and therefore sorted so we can perform binary search on it
