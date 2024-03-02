@@ -84,3 +84,8 @@ Two common use cases:
   the answer repeatedly for a set of `ranges` from the array.
   Example Leetcode 1004: Given a binary array nums and an integer k, return the maximum number of `consecutive 1's` (consecutive 1's creates a range)
   in the array if you can flip at most k 0's.
+
+### BFS (Breadth First Search)
+
+- Great for finding the shortest path in the graph.
+- Can be used with priority queue to form Dijkstras algorithm to find shortest path in weighted graph
