@@ -2,7 +2,7 @@
 
 Contains my answers to problems solved on variouse competitive programming sites
 
-## [Code Template](./CODE_TEMPLATES.md)
+### [Code Template](./CODE_TEMPLATES.md)
 
 ### Setting up C++ in VSCode
 
