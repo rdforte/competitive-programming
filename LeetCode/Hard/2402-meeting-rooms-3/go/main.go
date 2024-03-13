@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"math"
 	"sort"
 )
 
@@ -26,51 +25,44 @@ func main() {
 }
 
 func mostBooked(n int, meetings [][]int) int {
-	// maxMeetingEnd := 0
 	sort.Slice(meetings, func(i, j int) bool {
-		// maxMeetingEnd = int(math.Max(float64(meetings[i][1]), float64(maxMeetingEnd)))
-		// maxMeetingEnd = int(math.Max(float64(meetings[j][1]), float64(maxMeetingEnd)))
 		return meetings[i][0] < meetings[j][0]
 	})
 
 	roomsEndTime := make([]int, n)
-	roomsOccupied := make([]bool, n)
 	roomsCount := make([]int, n)
 
-	curTime := 0
-TIMES:
+MEETING:
 	for len(meetings) > 0 {
-		for o, roomOccupied := range roomsOccupied {
-			if len(meetings) == 0 {
-				break TIMES
+		meetingStart, meetingEnd := meetings[0][0], meetings[0][1]
+
+		roomEndFirstIndex := 0
+		for i, endTime := range roomsEndTime {
+			if endTime < roomsEndTime[roomEndFirstIndex] {
+				roomEndFirstIndex = i
 			}
 
-			if roomOccupied && curTime >= roomsEndTime[o] {
-				roomsEndTime[o] = 0
-				roomOccupied = false
-			}
-
-			if !roomOccupied && meetings[0][0] <= curTime {
-				overlap := (curTime - meetings[0][0])
-				if overlap < 0 {
-					overlap = 0
-				}
-
-				roomsEndTime[o] = meetings[0][1] + overlap
-				roomsOccupied[o] = true
-				roomsCount[o]++
+			if meetingStart >= endTime {
+				roomsEndTime[i] = meetingEnd
+				roomsCount[i]++
 				meetings = meetings[1:]
-
-				curTime = int(math.Max(float64(curTime), float64(roomsEndTime[0])))
+				continue MEETING
 			}
 		}
+
+		offset := roomsEndTime[roomEndFirstIndex] - meetingStart
+		if offset < 0 {
+			offset = 0
+		}
+
+		roomsEndTime[roomEndFirstIndex] = meetingEnd + offset
+		roomsCount[roomEndFirstIndex]++
+		meetings = meetings[1:]
 	}
 
 	roomNum := 0
-	count := roomsCount[0]
 	for i, c := range roomsCount {
-		if c > count {
-			count = c
+		if c > roomsCount[roomNum] {
 			roomNum = i
 		}
 	}
