@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"sort"
 )
 
@@ -13,6 +14,15 @@ func main() {
 		{3, 4},
 	}
 	fmt.Println(mostBooked(2, meetings))
+
+	meetings = [][]int{
+		{1, 20},
+		{2, 10},
+		{3, 5},
+		{4, 9},
+		{6, 8},
+	}
+	fmt.Println(mostBooked(3, meetings))
 }
 
 func mostBooked(n int, meetings [][]int) int {
@@ -50,16 +60,17 @@ TIMES:
 				roomsOccupied[o] = true
 				roomsCount[o]++
 				meetings = meetings[1:]
+
+				curTime = int(math.Max(float64(curTime), float64(roomsEndTime[0])))
 			}
 		}
-
-		curTime++
 	}
 
 	roomNum := 0
 	count := roomsCount[0]
 	for i, c := range roomsCount {
 		if c > count {
+			count = c
 			roomNum = i
 		}
 	}
