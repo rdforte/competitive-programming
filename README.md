@@ -2,6 +2,8 @@
 
 Contains my answers to problems solved on variouse competitive programming sites
 
+## [Code Template](./CODE_TEMPLATES.md)
+
 ### Setting up C++ in VSCode
 
 [Using Clang in Visual Studio Code](https://code.visualstudio.com/docs/cpp/config-clang-mac)
@@ -50,7 +52,7 @@ We use C++ 17 because LeetCode does not support C++ 20
 
 ## Tips
 
-Always suss out your constraints example graph question constraints:
+Always suss out your constraints. Example graph question constraints:
 
 - `n == rooms.length`
 - `2 <= n <= 1000` the array length is between 2 and 1000
