@@ -1,6 +1,6 @@
 # Code Template
 
-Here are code templates for common patterns for all the data structures and algorithms
+Here are code templates for common patterns.
 
 ## Two pointers: one input, opposite ends
 
@@ -22,6 +22,10 @@ int fn(vector<int>& arr) {
     return ans;
 }
 ```
+
+**Questions**
+
+- [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/description/)
 
 ## Two pointers: two inputs, exhaust both
 
