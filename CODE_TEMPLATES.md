@@ -1,6 +1,6 @@
 # Code Template
 
-Here are code templates for common patterns.
+Here are code templates for common patterns. Most examples are given in C++ but the ones that arent are labeled with the language.
 
 ## Two pointers: one input, opposite ends
 
@@ -110,22 +110,59 @@ func fn(chars []byte) string {
 }
 ```
 
+`In JavaScript, benchmarking shows that concatenation with += is faster than using .join().`
+
 ## Linked List: fast and slow pointer
 
 ```cpp
+int fn(ListNode* head) {
+    ListNode* slow = head;
+    ListNode* fast = head;
+    int ans = 0;
 
+    while (fast != nullptr && fast->next != nullptr) {
+        // do logic
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+
+    return ans;
+}
 ```
 
 ## Reversing a Linked List
 
 ```cpp
+ListNode* fn(ListNode* head) {
+    ListNode* curr = head;
+    ListNode* prev = nullptr;
+    while (curr != nullptr) {
+        ListNode* nextNode = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = nextNode;
+    }
 
+    return prev;
+}
 ```
 
 ## Find number of subarrays that fit an exact criteria
 
 ```cpp
+int fn(vector<int>& arr, int k) {
+    unordered_map<int, int> counts;
+    counts[0] = 1;
+    int ans = 0, curr = 0;
 
+    for (int num: arr) {
+        // do logic to change curr
+        ans += counts[curr - k];
+        counts[curr]++;
+    }
+
+    return ans;
+}
 ```
 
 ## Monotonic increasing stack
