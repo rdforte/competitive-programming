@@ -80,7 +80,7 @@ Two common use cases:
 - Good for finding the top **K** elements.
 - Dijkstras algorithm for calculating the shortest path in weighted graphs.
 
-### Sliding Window
+### Sliding Window / 2 pointers
 
 - The condition for using the sliding window technique is the problem asks to find the `max/min` value for a function that calculates
   the answer repeatedly for a set of `ranges` from the array.
