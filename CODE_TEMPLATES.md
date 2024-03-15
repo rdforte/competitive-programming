@@ -55,3 +55,184 @@ int fn(vector<int>& arr1, vector<int>& arr2) {
     return ans;
 }
 ```
+
+## Sliding Window
+
+```cpp
+int fn(vector<int>& arr) {
+    int left = 0, ans = 0, curr = 0;
+
+    for (int right = 0; right < arr.size(); right++) {
+        // do logic here to add arr[right] to curr
+
+        while (WINDOW_CONDITION_BROKEN) {
+            // remove arr[left] from curr
+            left++;
+        }
+
+        // update ans
+    }
+
+    return ans;
+}
+```
+
+## Build a prefix Sum
+
+prefix sum is basically sum all previous elements in the array with a given index.
+
+```cpp
+vector<int> fn(vector<int>& arr) {
+    vector<int> prefix(arr.size());
+    prefix[0] = arr[0];
+
+    for (int i = 1; i < arr.size(); i++) {
+        prefix[i] = prefix[i - 1] + arr[i];
+    }
+
+    return prefix;
+}
+```
+
+## Efficient string building
+
+```cpp
+string fn(vector<char>& arr) {
+    return string(arr.begin(), arr.end())
+}
+```
+
+Golang:
+
+```go
+func fn(chars []byte) string {
+	return string(chars)
+}
+```
+
+## Linked List: fast and slow pointer
+
+```cpp
+
+```
+
+## Reversing a Linked List
+
+```cpp
+
+```
+
+## Find number of subarrays that fit an exact criteria
+
+```cpp
+
+```
+
+## Monotonic increasing stack
+
+The same logic can be applied to maintain a monotonic queue.
+
+```cpp
+
+```
+
+## Binary tree: DFS (recursive)
+
+```cpp
+
+```
+
+## binary tree: dfs (iterative)
+
+```cpp
+
+```
+
+## Binary tree: BFS
+
+```cpp
+
+```
+
+## Graph: DFS (recursive)
+
+For the graph templates, assume the nodes are numbered from `0` to `n - 1` and the graph is given as an adjacency list.
+Depending on the problem, you may need to convert the input into an equivalent adjacency list before using the templates.
+
+```cpp
+
+```
+
+## Graph: DFS (iterative)
+
+```cpp
+
+```
+
+## Graph: BFS
+
+```cpp
+
+```
+
+## Find top k elements with heap
+
+```cpp
+
+```
+
+## Binary Search
+
+```cpp
+
+```
+
+## Binary search: duplicate elements, left-most insertion point
+
+```cpp
+
+```
+
+## Binary search: duplicate elements, right-most insertion point
+
+```cpp
+
+```
+
+## Binary search: for greedy problems
+
+If looking for a minimum:
+
+```cpp
+
+```
+
+If looking for a maximum:
+
+```cpp
+
+```
+
+## Backtracking
+
+```cpp
+
+```
+
+## Dynamic programming: top-down memoization
+
+```cpp
+
+```
+
+## Build a trie
+
+```cpp
+
+```
+
+## Dijkstra's algorithm
+
+```cpp
+
+```
