@@ -6,17 +6,19 @@ func main() {
 	fmt.Println(findMin([]int{3, 4, 5, 1, 2}))
 	fmt.Println(findMin([]int{4, 5, 6, 7, 0, 1, 2}))
 	fmt.Println(findMin([]int{11, 13, 15, 17}))
+	fmt.Println(findMin([]int{3, 1, 2}))
 }
 
 func findMin(nums []int) int {
 	l, r := 0, len(nums)-1
 	for l < r {
-		mid := l + (r-l)/2
+		midI := l + (r-l)/2
+		mid := nums[midI]
 
-		if nums[r] < nums[mid] {
-			l = mid + 1
+		if nums[r] > mid {
+			r = midI
 		} else {
-			r = mid - 1
+			l = midI + 1
 		}
 	}
 	return nums[l]
