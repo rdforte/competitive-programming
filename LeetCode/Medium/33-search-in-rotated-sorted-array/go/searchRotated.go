@@ -2,14 +2,13 @@ package searchRotated
 
 func Search(nums []int, target int) int {
 	l, u := 0, len(nums)-1
-	for l <= u {
+	for l < u {
 		mid := l + ((u - l) / 2)
 
-		// mid to the right
-		if nums[mid] > nums[len(nums)-1] {
-			l = mid + 1
+		if nums[mid] < nums[u] {
+			u = mid
 		} else {
-			u = mid - 1
+			l = mid + 1
 		}
 	}
 
@@ -17,7 +16,7 @@ func Search(nums []int, target int) int {
 		return piv
 	}
 
-	if piv := binarySearch(nums, 0, l, target); piv != -1 {
+	if piv := binarySearch(nums, 0, l-1, target); piv != -1 {
 		return piv
 	}
 
