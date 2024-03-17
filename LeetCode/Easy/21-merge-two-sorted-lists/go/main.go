@@ -18,6 +18,8 @@ func main() {
 	}
 }
 
+// A nice tip here instead of trying to figure out what the first Node should be we just create our own starting node and return its Next.
+
 func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
 	head := &ListNode{0, nil}
 	next := head
