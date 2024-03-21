@@ -36,6 +36,8 @@ func reorderList(head *ListNode) {
 	primary := head
 	secondary := prev
 
+	// The secondary chains length is less than the primary chains length.
+	// Because the last item of secondary is the same as the last item of primary we disregard secondarys last node.
 	for secondary.Next != nil {
 		tmp := primary.Next
 		primary.Next = secondary
