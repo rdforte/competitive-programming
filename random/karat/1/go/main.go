@@ -90,30 +90,30 @@ import "fmt"
 
 func main() {
 	// sample inputs
-	// records1 := [][]string {
-	//   {"Paul", "enter"},
-	//   {"Pauline", "exit"},
-	//   {"Paul", "enter"},
-	//   {"Paul", "exit"},
-	//   {"Martha", "exit"},
-	//   {"Joe", "enter"},
-	//   {"Martha", "enter"},
-	//   {"Steve", "enter"},
-	//   {"Martha", "exit"},
-	//   {"Jennifer", "enter"},
-	//   {"Joe", "enter"},
-	//   {"Curtis", "exit"},
-	//   {"Curtis", "enter"},
-	//   {"Joe", "exit"},
-	//   {"Martha", "enter"},
-	//   {"Martha", "exit"},
-	//   {"Jennifer", "exit"},
-	//   {"Joe", "enter"},
-	//   {"Joe", "enter"},
-	//   {"Martha", "exit"},
-	//   {"Joe", "exit"},
-	//   {"Joe", "exit"},
-	// }
+	records1 := [][]string{
+		{"Paul", "enter"},
+		{"Pauline", "exit"},
+		{"Paul", "enter"},
+		{"Paul", "exit"},
+		{"Martha", "exit"},
+		{"Joe", "enter"},
+		{"Martha", "enter"},
+		{"Steve", "enter"},
+		{"Martha", "exit"},
+		{"Jennifer", "enter"},
+		{"Joe", "enter"},
+		{"Curtis", "exit"},
+		{"Curtis", "enter"},
+		{"Joe", "exit"},
+		{"Martha", "enter"},
+		{"Martha", "exit"},
+		{"Jennifer", "exit"},
+		{"Joe", "enter"},
+		{"Joe", "enter"},
+		{"Martha", "exit"},
+		{"Joe", "exit"},
+		{"Joe", "exit"},
+	}
 
 	records2 := [][]string{
 		{"Paul", "enter"},
@@ -138,6 +138,7 @@ func main() {
 
 	// enter = paul, exit = paul, raj
 
+	fmt.Println(findMissingRecords(records1))
 	fmt.Println(findMissingRecords(records2))
 	fmt.Println(findMissingRecords(records3))
 	fmt.Println(findMissingRecords(records4))
@@ -163,14 +164,20 @@ func findMissingRecords(records [][]string) []map[string]struct{} {
 			enterLogs[name] = struct{}{}
 		}
 
-		delete(enter, name)
-		delete(exit, name)
+		if state == "exit" {
+			delete(enter, name)
+			delete(exit, name)
+		}
 
 		if state == "enter" {
 			enter[name] = struct{}{}
 		} else {
 			exit[name] = struct{}{}
 		}
+	}
+
+	for key := range enter {
+		exitLogs[key] = struct{}{}
 	}
 
 	return []map[string]struct{}{
