@@ -97,3 +97,7 @@ Two common use cases:
 Although binary search algorithms are typically used to find one element in a sorted sequence, they have many other uses.
 You can apply a binary search to a result, for example. Say you wanted to determine the minimum square footage of office space needed to fit all a company's employees easily.
 The square footage is a consecutive number and therefore sorted so we can perform binary search on it
+
+### Floyd's Algorithm
+
+Used for finding the start of a linked list cycle. [287 find-the-duplicate-number](https://leetcode.com/problems/find-the-duplicate-number/description/)
