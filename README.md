@@ -100,4 +100,7 @@ The square footage is a consecutive number and therefore sorted so we can perfor
 
 ### Floyd's Algorithm
 
-Used for finding the start of a linked list cycle. [287 find-the-duplicate-number](https://leetcode.com/problems/find-the-duplicate-number/description/)
+Used for finding the start of a linked list cycle.
+
+- [287 find-the-duplicate-number](https://leetcode.com/problems/find-the-duplicate-number/description/)
+- [Floyd's cycle detection algorithm (Tortoise and hare)](https://www.youtube.com/watch?v=PvrxZaH_eZ4)
