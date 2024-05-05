@@ -104,3 +104,16 @@ Used for finding the start of a linked list cycle.
 
 - [287 find-the-duplicate-number](https://leetcode.com/problems/find-the-duplicate-number/description/)
 - [Floyd's cycle detection algorithm (Tortoise and hare)](https://www.youtube.com/watch?v=PvrxZaH_eZ4)
+
+### GCD (Greatest Common Divisor) Euclidean algorithm
+
+Used to find the greatest common divisor between two numbers
+
+```go
+func gcd(a, b int) int {
+	if b == 0 {
+		return a
+	}
+	return gcd(b, a%b)
+}
+```
