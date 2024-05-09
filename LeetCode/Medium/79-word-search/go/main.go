@@ -46,16 +46,17 @@ func exist(board [][]byte, word string) bool {
 LOOP:
 	for row := 0; row < len(board); row++ {
 		for col := 0; col < len(board[row]); col++ {
-			visited := [][]bool{}
-			for i := 0; i < len(board); i++ {
-				visited = append(visited, make([]bool, len(board[0])))
-			}
-
-			visited[row][col] = true
-
 			var dfs func(r, c, i int)
 			dfs = func(r, c, i int) {
 				if seen {
+					return
+				}
+
+				if r >= len(board) || r < 0 || c < 0 || c >= len(board[r]) {
+					return
+				}
+
+				if board[r][c] == '#' {
 					return
 				}
 
@@ -68,21 +69,17 @@ LOOP:
 					return
 				}
 
+				cur := board[r][c]
+				board[r][c] = '#'
+
 				for _, dir := range directions {
 					nextR := r + dir[0]
 					nextC := c + dir[1]
-					if nextR >= len(board) || nextR < 0 || nextC < 0 || nextC >= len(board[r]) {
-						continue
-					}
 
-					if visited[nextR][nextC] {
-						continue
-					}
-
-					visited[nextR][nextC] = true
 					dfs(nextR, nextC, i+1)
-					visited[nextR][nextC] = false
 				}
+
+				board[r][c] = cur
 
 			}
 
