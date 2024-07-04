@@ -3,53 +3,57 @@ package main
 import (
 	"bytes"
 	"fmt"
-	"strings"
+	"io"
 )
 
 func main() {
-	// Reader -------------------------------------------------------------------------------------------------------
-	input := "foo"
+	b := bytes.NewReader([]byte("Hello, World!"))
+	var buf bytes.Buffer
+	buf.ReadFrom(b)
+	fmt.Println(buf.String())
 
-	dataSource := strings.NewReader(input)
+	// custom
 
-	dest := make([]byte, dataSource.Len())
+	r := &CustomReader{s: []byte("Hello, World!")}
+	var buf1 bytes.Buffer
+	buf1.ReadFrom(r)
+	fmt.Println(buf1.String())
 
-	i, err := dataSource.Read(dest) // read from source
-	if err != nil {
-		panic(err)
-	}
-	fmt.Printf("read %d\n", i)
-	fmt.Println(string(dest))
+	// write
 
-	// Writer --------------------------------------------------------------------------------------------------------
-	dataSource2 := bytes.NewBuffer(make([]byte, 0))
-	dataSource2.Write([]byte("hello")) // write data to the data source
+	var b2 bytes.Buffer
+	b2.Write([]byte("Hello, World!"))
+	fmt.Println(b2.String())
 
-	// first read
+	// func
 
-	i, err = dataSource2.Read(dest) // read data from the data source
-	if err != nil {
-		panic(err)
-	}
-	fmt.Printf("read %d\n", i)
-	fmt.Println(string(dest)) // note here we did not read everything because len of dest is 3 and len of dataSource2 is 5
+	var b3 bytes.Buffer
+	getData(&b3)
+	fmt.Println(b3.String())
 
-	// second read
-
-	i, err = dataSource2.Read(dest) // read data from the data source - hel
-	if err != nil {
-		panic(err)
-	}
-	fmt.Printf("read %d\n", i)
-	fmt.Println(string(dest)) // this will override the first 2 characters in dest - lol
-
-	// third read
-
-	i, err = dataSource2.Read(dest) // read data from the buffer - hel
-	if err != nil {
-		fmt.Println(err) // now that we have read all the data we get EOF error
-	}
-
-	// NOTE: the above can be done in a loop and we can break when we get an EOF.
-
+	// init
+	v4 := bytes.NewBuffer([]byte("Hello, World!"))
+	fmt.Println(string(v4.Bytes()))
+	str, _ := v4.ReadString(',')
+	fmt.Println(str)
+	fmt.Println(v4.String()) // only gets the remainder now because we have read Hello, from the buffer
 }
+
+type CustomReader struct {
+	s []byte
+	i int
+}
+
+func (r *CustomReader) Read(b []byte) (n int, err error) {
+	if r.i >= len(r.s) {
+		return 0, io.EOF
+	}
+	n = copy(b, r.s[r.i:])
+	r.i += n
+	return
+}
+
+func getData(w io.Writer) {
+	w.Write([]byte("Hello, World!"))
+}
+
