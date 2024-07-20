@@ -83,6 +83,10 @@ examples may include:
 - What is the longest possible...
 - Is it possible to reach a certain point...
 
+Dynamic Programming can be performed in bottom-up (iterative) approach or top-down (recursive with memoization). If not sure how to perform
+memoization for top-down think about memoizing the function call which in our case would be the arguments provided to the function at that time
+of calling it. A good example of how I did this here [1770. Maximum Score from Performing Multiplication Operations](LeetCode/Hard/1770-maximum-score-from-performing-multiplication-operations/go/main.go)
+
 ### Heaps / Priority Queue
 
 - Good for finding the top **K** elements.
