@@ -21,5 +21,6 @@ LeetCode/Competitions/*/q4.dSYM
 
 node_modules
 
+*/**/.DS_Store
 
 index
