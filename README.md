@@ -83,6 +83,12 @@ examples may include:
 - What is the longest possible...
 - Is it possible to reach a certain point...
 
+Identifying a 2D dynamic programming problem can be tricky but with DP especially top down it is all about memoization. If you have to keep track
+of something where it changes ie you have 5 coins but you can only use max 1 of each coin well then we need to keep track of the coins we have used at each state.
+Though if we could reuse the coins any number of times then what we can do with the coins does not change and no need to track this state so therefore
+we can just go with 1D array to manage state. For example [322. Coin Change](LeetCode/Medium/322-coin-change/go/main.go) we can reuse the coins any
+number of times so its a 1D array.
+
 Dynamic Programming can be performed in bottom-up (iterative) approach or top-down (recursive with memoization). If not sure how to perform
 memoization for top-down think about memoizing the function call which in our case would be the arguments provided to the function at that time
 of calling it. A good example of how I did this here [1770. Maximum Score from Performing Multiplication Operations](LeetCode/Hard/1770-maximum-score-from-performing-multiplication-operations/go/main.go)
