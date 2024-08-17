@@ -83,11 +83,18 @@ examples may include:
 - What is the longest possible...
 - Is it possible to reach a certain point...
 
-Identifying a 2D dynamic programming problem can be tricky but with DP especially top down it is all about memoization. If you have to keep track
-of something where it changes ie you have 5 coins but you can only use max 1 of each coin well then we need to keep track of the coins we have used at each state.
-Though if we could reuse the coins any number of times then what we can do with the coins does not change and no need to track this state so therefore
-we can just go with 1D array to manage state. For example [322. Coin Change](LeetCode/Medium/322-coin-change/go/main.go) we can reuse the coins any
-number of times so its a 1D array.
+**2D vs 1D**
+Identifying a 2D dynamic programming problem can be tricky but with DP especially top down it is all about memoization.
+If I have a question where im trying to see if I can make 'X' give items 'Y' and I can reuse items 'Y' as many times as I like then why bother
+keeping track of 'Y' because 'Y' is not important in this case because I can just reuse it as much as I like because in the end all I care about
+is if I can make 'X' from 'Y'. This is a good example of 1D because no need to keep track of Y's state.
+
+If on the other hand I can not reuse 'Y' and I can only use these items once well now I need a way to keep track of what I have/havn't used. In this
+case I need to keep track of Y's state. This is a good case for a 2D dynamic programming question.
+
+So in the end ask yourself "do i need to keep track of theses items state?", if not then 1D otherwise 2D.
+
+[322. Coin Change 1D question](LeetCode/Medium/322-coin-change/go/main.go)
 
 Dynamic Programming can be performed in bottom-up (iterative) approach or top-down (recursive with memoization). If not sure how to perform
 memoization for top-down think about memoizing the function call which in our case would be the arguments provided to the function at that time
