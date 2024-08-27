@@ -101,7 +101,7 @@ memoization for top-down think about memoizing the function call which in our ca
 of calling it. A good example of how I did this here [1770. Maximum Score from Performing Multiplication Operations](LeetCode/Hard/1770-maximum-score-from-performing-multiplication-operations/go/main.go)
 
 **Sometimes** (i say sometimes because that may not always be the case) it can be easier to to do the top-down approach first and then translate this over to bottom-up for improved performance. A good example of this
-is [1143 Longest Common Subsequence](LeetCode/Medium/1143-longest-common-subsequence/go/main.go)
+is [1143 Longest Common Subsequence](LeetCode/Medium/1143-longest-common-subsequence/go/main.go) and [Best Time to Buy and Sell Stock IV](LeetCode/Hard/188-best-time-to-buy-and-sell-stock-iv/go/main.go)
 
 ### Heaps / Priority Queue
 

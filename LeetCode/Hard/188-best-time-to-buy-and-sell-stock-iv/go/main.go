@@ -58,7 +58,7 @@ func maxProfitTopDown(numTrans int, prices []int) int {
 	return dp(0, numTrans-1, 0)
 }
 
-// With Bottomo up remember we start at the base case
+// With Bottomo up remember we start at the base case.
 
 func maxProfitBottomUp(numTrans int, prices []int) int {
 	var dp [][][]int
