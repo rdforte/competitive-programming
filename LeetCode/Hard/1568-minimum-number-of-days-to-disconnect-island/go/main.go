@@ -33,7 +33,8 @@ func minDays(grid [][]int) int {
 	}
 
 	landCells, numIslands := 0, 0
-	apInfo := newArticulationPoint(false, 0)
+	hasArticulationPoint := false
+	time := 0
 
 	// setup slices to store info for each cell
 	rows, cols := len(grid), len(grid[0])
@@ -41,8 +42,8 @@ func minDays(grid [][]int) int {
 
 	var findArticulationPoint func(r, c int)
 	findArticulationPoint = func(r, c int) {
-		discoverTime[r][c] = apInfo.time
-		apInfo.time++
+		discoverTime[r][c] = time
+		time++
 		lowestReachableTime[r][c] = discoverTime[r][c]
 		children := 0
 
@@ -50,6 +51,7 @@ func minDays(grid [][]int) int {
 			newRow, newCol := r+dir[0], c+dir[1]
 			if isValidLandCell(newRow, newCol, grid) {
 				if discoverTime[newRow][newCol] == -1 {
+					// have not visitied this cell before as discoverTime is -1
 					children++
 					parentCell[newRow][newCol] = r*cols + c // row index * num cols + col index = unique individual number for cell
 					findArticulationPoint(newRow, newCol)
@@ -60,7 +62,7 @@ func minDays(grid [][]int) int {
 					// check for articulation point condition
 					if lowestReachableTime[newRow][newCol] >= discoverTime[r][c] &&
 						parentCell[r][c] != -1 {
-						apInfo.hasArticulationPoint = true
+						hasArticulationPoint = true
 					}
 				} else if newRow*cols+newCol != parentCell[r][c] {
 					// update lowestReachableTime
@@ -71,7 +73,7 @@ func minDays(grid [][]int) int {
 
 		// root of dfs tree is an articulation point if it has more than one child.
 		if parentCell[r][c] == -1 && children > 1 {
-			apInfo.hasArticulationPoint = true
+			hasArticulationPoint = true
 		}
 	}
 
@@ -101,7 +103,7 @@ func minDays(grid [][]int) int {
 
 	// landCells is more than 1 and we have 1 land mass so how many days needed to divide land?
 
-	if apInfo.hasArticulationPoint {
+	if hasArticulationPoint {
 		return 1 // we have an articulation point meaning changing this cell to 0 would break the graph into 2 ie: 2 islands.
 	}
 
@@ -111,15 +113,6 @@ func minDays(grid [][]int) int {
 }
 
 // HELPERS --------------------------------------------------------------------------------------
-
-func newArticulationPoint(hasArticulationPoint bool, time int) ArticulationPoint {
-	return ArticulationPoint{hasArticulationPoint, time}
-}
-
-type ArticulationPoint struct {
-	hasArticulationPoint bool
-	time                 int
-}
 
 // newCellInfo returns the 3 key pieces of information we need to keep track of in order to perform `Tarjan algorithm`.
 // discoveryTime: When a node is first visited during DFS.

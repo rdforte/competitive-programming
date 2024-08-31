@@ -145,3 +145,10 @@ func gcd(a, b int) int {
 	return gcd(b, a%b)
 }
 ```
+
+### Tarjan's Algorithm
+
+Used to find the articulation point in a graph. An articulation point is a node that when removed will divide the graph into 2.
+[LeetCode Hard - 1568 minimum number of days to disconnect island](LeetCode/Hard/1568-minimum-number-of-days-to-disconnect-island/go/main.go).
+
+[YouTube: Tarjan's Strongly Connected Component (SCC) Algorithm (UPDATED) | Graph Theory](https://www.youtube.com/watch?v=wUgWX0nc4NY)
