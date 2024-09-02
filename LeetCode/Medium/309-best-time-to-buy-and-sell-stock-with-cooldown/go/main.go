@@ -23,7 +23,7 @@ func maxProfit(prices []int) int {
 		maxProfit := dp(p+1, 0, h)
 
 		if h == 1 {
-			// has baught so can sell
+			// has bought so can sell
 			maxProfit = max(maxProfit, prices[p]+dp(p+1, 1, 0))
 		}
 
@@ -62,7 +62,7 @@ func maxProfitTopDown(prices []int) int {
 			maxProfit := dp(p+1, 0, h)
 
 			if h == 1 {
-				// has baught so can sell
+				// has bought so can sell
 				maxProfit = max(maxProfit, prices[p]+dp(p+1, 1, 0))
 			}
 
