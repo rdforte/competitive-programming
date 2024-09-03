@@ -103,6 +103,16 @@ of calling it. A good example of how I did this here [1770. Maximum Score from P
 **Sometimes** (i say sometimes because that may not always be the case) it can be easier to to do the top-down approach first and then translate this over to bottom-up for improved performance. A good example of this
 is [1143 Longest Common Subsequence](LeetCode/Medium/1143-longest-common-subsequence/go/main.go) and [Best Time to Buy and Sell Stock IV](LeetCode/Hard/188-best-time-to-buy-and-sell-stock-iv/go/main.go)
 
+**State Reduction** is a way in which we can reduce the number of states which will in turn reduce our space complexity and possibly our time complexity.
+If you look at [House Robber](LeetCode/Medium/198-house-robber/go/main.go) especially the Top Down recursive approach we could have include another parameter which was
+a boolean to indicate if we could/couldn't rob the house but instead we used the index's which reduced the state.
+
+**Note: state reductions for space complexity usually only apply to bottom-up implementations, while improving time complexity by reducing the number of state variables applies to both implementations.**
+
+Another common scenario for improving space complexity is when the recurence relation is static (no iteration) along one dimension (flat array). An example of this is
+[nth fibonacci number](LeetCode/Easy/509-fibonacci-number/go/main.go). Because we only care about the previouse 2 fibonacci numbers there is no need to keep an array
+holding all previouse fibonacci numbers.
+
 ### Heaps / Priority Queue
 
 - Good for finding the top **K** elements.
