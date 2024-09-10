@@ -75,20 +75,23 @@ func changeTopDown(amount int, coins []int) int {
 }
 
 func changeBottomUp(amount int, coins []int) int {
-	// dp := make([][]int, 0, len(coins)+1)
-	// for range len(coins) {
-	// dp = append(dp, make([]int, amount+1))
-	// }
-	// for i := 0; i < len(dp[0]);i++ {
-	// dp[]
-	// }
+	dp := make([][]int, 0, len(coins)+1)
+	for range len(coins) + 1 {
+		dp = append(dp, make([]int, amount+1))
+	}
+	for i := range dp {
+		dp[i][0] = 1
+	}
 
-	// for c := len(coins) - 1; c >= 0; c-- {
-	// for a := 0; a <= amount; a++ {
-	// dp[c][a] = dp[c][a-coins[c]] + dp[c+1][a]
-	// }
-	// }
+	for c := len(coins) - 1; c >= 0; c-- {
+		for a := 1; a <= amount; a++ {
+			if a-coins[c] < 0 {
+				dp[c][a] = dp[c+1][a]
+			} else {
+				dp[c][a] = dp[c][a-coins[c]] + dp[c+1][a]
+			}
+		}
+	}
 
-	// return dp[len(coins)-1][0]
-	return 0
+	return dp[0][amount]
 }
