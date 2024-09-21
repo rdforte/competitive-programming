@@ -113,6 +113,25 @@ Another common scenario for improving space complexity is when the recurence rel
 [nth fibonacci number](LeetCode/Easy/509-fibonacci-number/go/main.go). Because we only care about the previouse 2 fibonacci numbers there is no need to keep an array
 holding all previouse fibonacci numbers.
 
+### Dynamic Programming (Kadane's Algorithm)
+
+Kadane's Algorithm is an algorith that can find the maximum sum subarray when given an array of numbers. Its time complexity is O(n) and space O(1).
+
+```
+// Given an input array of numbers "nums",
+1. best = nums[0]
+2. current = nums[0]
+3. for num in nums[1:]: // start at index 1
+    3.1. current = Max(current + num, num)
+    3.2. best = Max(best, current)
+
+4. return best
+```
+
+[53. Maximum Subarray](LeetCode/Medium/53-maximum-subarray/go/main.go)
+
+![kadanes algorithm](assets/kadanes_algorithm.mp4)
+
 ### Heaps / Priority Queue
 
 - Good for finding the top **K** elements.
