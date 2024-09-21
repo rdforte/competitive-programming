@@ -1,5 +1,7 @@
 # Competitive Programming
 
+![](https://leetcard.jacoblin.cool/rdforte?border=0&radius=20)
+
 Contains my answers to problems solved on variouse competitive programming sites
 
 ### [Code Template](./CODE_TEMPLATES.md)
