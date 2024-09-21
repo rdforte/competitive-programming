@@ -132,7 +132,7 @@ Kadane's Algorithm is an algorith that can find the maximum sum subarray when gi
 
 [53. Maximum Subarray](LeetCode/Medium/53-maximum-subarray/go/main.go)
 
-![kadanes algorithm](assets/kadanes_algorithm.mp4)
+![kadanes algorithm](assets/kadanes_algorithm.gif)
 
 ### Heaps / Priority Queue
 
