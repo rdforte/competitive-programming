@@ -1,26 +1,20 @@
 package main
 
-import (
-	"fmt"
-	"math"
-)
+import "fmt"
 
 func main() {
-	fmt.Println(maxProfit([]int{7, 1, 5, 3, 6, 4}) == 5)
-	fmt.Println(maxProfit([]int{7, 6, 4, 3, 1}) == 0)
-	fmt.Println(maxProfit([]int{7, 1, 5, 0, 6, 4}) == 6)
-	fmt.Println(maxProfit([]int{0, 1, 7, 0, 6, 4}) == 7)
+	fmt.Println(maxProfit([]int{7, 1, 5, 3, 6, 4}))
+	fmt.Println(maxProfit([]int{7, 6, 4, 3, 1}))
 }
 
 func maxProfit(prices []int) int {
-	var maxProfit float64
+	maxP := 0         // havn't sold yet so we have 0 profit
+	buy := -prices[0] // when we buy we are in the negative until we sell
 
-	for l, r := 0, 0; r < len(prices); r++ {
-		maxProfit = math.Max(maxProfit, float64(prices[r]-prices[l]))
-		if prices[r] < prices[l] {
-			l = r
-		}
+	for i := 1; i < len(prices); i++ {
+		buy = max(buy, -prices[i]) // we want to buy at the lowest price
+		maxP = max(maxP, buy+prices[i])
 	}
 
-	return int(maxProfit)
+	return maxP
 }

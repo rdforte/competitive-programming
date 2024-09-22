@@ -131,6 +131,7 @@ Kadane's Algorithm is an algorith that can find the maximum sum subarray when gi
 ```
 
 [53. Maximum Subarray](LeetCode/Medium/53-maximum-subarray/go/main.go)
+[121. Best Time to Buy and Sell Stock](LeetCode/Easy/121-best-time-buy-sell-stock/go/main.go)
 
 ![kadanes algorithm](assets/kadanes_algorithm.gif)
 
