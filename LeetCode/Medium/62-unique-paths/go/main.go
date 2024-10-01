@@ -27,14 +27,3 @@ func uniquePaths(m int, n int) int {
 
 	return grid[m-1][n-1]
 }
-
-func uniquePathsOptimised(m int, n int) int {
-	row, col := 1, 1
-	for r := 1; r < m; r++ {
-		for c := 1; c < n; c++ {
-			col := row + col
-		}
-	}
-
-	return grid[m-1][n-1]
-}
