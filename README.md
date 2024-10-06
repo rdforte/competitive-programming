@@ -1,4 +1,4 @@
-# Competitive Programming
+![cplogo](assets/cplogo.png)
 
 ![](https://leetcard.jacoblin.cool/rdforte?border=0&radius=20)
 
