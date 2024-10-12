@@ -96,7 +96,7 @@ case I need to keep track of Y's state. This is a good case for a 2D dynamic pro
 
 So in the end ask yourself "do i need to keep track of theses items state?", if not then 1D otherwise 2D.
 
-[322. Coin Change 1D question](LeetCode/Medium/322-coin-change/go/main.go)
+- [322. Coin Change 1D question](LeetCode/Medium/322-coin-change/go/main.go)
 
 Dynamic Programming can be performed in bottom-up (iterative) approach or top-down (recursive with memoization). If not sure how to perform
 memoization for top-down think about memoizing the function call which in our case would be the arguments provided to the function at that time
@@ -134,9 +134,9 @@ Kadane's Algorithm is an algorith that can find the maximum sum subarray when gi
 4. return best
 ```
 
-[53. Maximum Subarray](LeetCode/Medium/53-maximum-subarray/go/main.go)
-[121. Best Time to Buy and Sell Stock](LeetCode/Easy/121-best-time-buy-sell-stock/go/main.go)
-[918. Maximum Sum Circular Subarray](LeetCode/Medium/918-maximum-sum-circular-subarray/go/main.go)
+- [53. Maximum Subarray](LeetCode/Medium/53-maximum-subarray/go/main.go)
+- [121. Best Time to Buy and Sell Stock](LeetCode/Easy/121-best-time-buy-sell-stock/go/main.go)
+- [918. Maximum Sum Circular Subarray](LeetCode/Medium/918-maximum-sum-circular-subarray/go/main.go)
 
 ![kadanes algorithm](assets/kadanes_algorithm.gif)
 
@@ -186,9 +186,9 @@ func gcd(a, b int) int {
 ### Tarjan's Algorithm
 
 Used to find the articulation point in a graph. An articulation point is a node that when removed will divide the graph into 2.
-[LeetCode Hard - 1568 minimum number of days to disconnect island](LeetCode/Hard/1568-minimum-number-of-days-to-disconnect-island/go/main.go).
 
-[YouTube: Tarjan's Strongly Connected Component (SCC) Algorithm (UPDATED) | Graph Theory](https://www.youtube.com/watch?v=wUgWX0nc4NY)
+- [LeetCode Hard - 1568 minimum number of days to disconnect island](LeetCode/Hard/1568-minimum-number-of-days-to-disconnect-island/go/main.go).
+- [YouTube: Tarjan's Strongly Connected Component (SCC) Algorithm (UPDATED) | Graph Theory](https://www.youtube.com/watch?v=wUgWX0nc4NY)
 
 ### Cyclic Arrays.
 
