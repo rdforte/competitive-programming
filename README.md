@@ -189,3 +189,26 @@ Used to find the articulation point in a graph. An articulation point is a node 
 [LeetCode Hard - 1568 minimum number of days to disconnect island](LeetCode/Hard/1568-minimum-number-of-days-to-disconnect-island/go/main.go).
 
 [YouTube: Tarjan's Strongly Connected Component (SCC) Algorithm (UPDATED) | Graph Theory](https://www.youtube.com/watch?v=wUgWX0nc4NY)
+
+### Cyclic Arrays.
+
+Sometimes you might have an array that cycles back arround.
+
+For example this will always find the indexes 2 infront of the current index when the array is a loop.
+
+```
+(i + 1) % len(array) , (i + 2) % len(array)
+
+```
+
+```
+i, arrLen := 1, 3
+(i + 1) % arrLen = 2
+(i + 2) % arrLen = 0 // looped back around
+```
+
+- [256 Paint House](LeetCode/Medium/256/go/main.go)
+
+## Achievements
+
+![100daysbadge](assets/100daysbadge.gif)
