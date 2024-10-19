@@ -208,6 +208,7 @@ i, arrLen := 1, 3
 ```
 
 - [256 Paint House](LeetCode/Medium/256/go/main.go)
+- [265 Paint House II](LeetCode/Hard/265-paint-house-2/go/main.go) _arrLen varies per input_
 
 ## Achievements
 
