@@ -95,6 +95,7 @@ If on the other hand I can not reuse 'Y' and I can only use these items once wel
 case I need to keep track of Y's state. This is a good case for a 2D dynamic programming question.
 
 So in the end ask yourself "do i need to keep track of theses items state?", if not then 1D otherwise 2D.
+The state you need to track determines the dimension of the array.
 
 - [322. Coin Change 1D question](LeetCode/Medium/322-coin-change/go/main.go)
 
@@ -109,6 +110,12 @@ is:
 - [188 Best Time to Buy and Sell Stock IV](LeetCode/Hard/188-best-time-to-buy-and-sell-stock-iv/go/main.go)
 - [714 Best Time to Buy and Sell Stock with Transaction Fee](LeetCode/Medium/714-best-time-to-buy-and-sell-stock-with-transaction-fee/)
 
+cases where it was easier to perform bottom-up vs top-down:
+
+- [718. Maximum Length of Repeated Subarray](LeetCode/Medium/718-maximum-length-of-repeated-subarray/go/main.go)
+<p align="center">
+  <img width="50%" height="50%" src="LeetCode/Medium/718-maximum-length-of-repeated-subarray/assets/solution.png" />
+</p>
 **State Reduction** is a way in which we can reduce the number of states which will in turn reduce our space complexity and possibly our time complexity.
 If you look at [House Robber](LeetCode/Medium/198-house-robber/go/main.go) especially the Top Down recursive approach we could have include another parameter which was
 a boolean to indicate if we could/couldn't rob the house but instead we used the index's which reduced the state.
