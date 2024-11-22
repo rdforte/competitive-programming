@@ -18,6 +18,8 @@ func main() {
 	fmt.Println(cache.Get(4))
 }
 
+// https://pkg.go.dev/container/list
+
 // Building a LRU CACHE.
 // Cache should be fast so we want O(1) to store and get a value from the cache.
 // We also want the ability to remove the last rescently used item from the cache.
