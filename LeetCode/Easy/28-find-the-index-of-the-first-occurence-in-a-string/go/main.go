@@ -9,20 +9,16 @@ func main() {
 }
 
 func strStr(haystack string, needle string) int {
-	l, r, n := 0, 0, 0
-	for r < len(haystack) {
-		if haystack[r] != needle[n] {
-			l++
-			r = l
-			n = 0
-			continue
-		}
-		if len(needle) == (r-l)+1 {
-			return l
+	for i, j := 0, 0; j < len(haystack); j++ {
+		idx := j - i
+		if haystack[j] != needle[idx] {
+			j = i
+			i++
 		}
 
-		r++
-		n++
+		if (j-i)+1 == len(needle) {
+			return i
+		}
 	}
 
 	return -1
