@@ -14,24 +14,34 @@ func main() {
 }
 
 func rotate(matrix [][]int) {
-	t, r, b, l := 0, len(matrix[0])-1, len(matrix)-1, 0
+	ptrs := [][]int{
+		{0, 0},                                // top left
+		{0, len(matrix[0]) - 1},               // top right
+		{len(matrix) - 1, len(matrix[0]) - 1}, // bottom right
+		{len(matrix) - 1, 0},                  // bottom left
+	}
+	tl, tr, br, bl := ptrs[0], ptrs[1], ptrs[2], ptrs[3]
 
-	for l < r {
-		for i := 0; i < r-l; i++ {
-			tr := matrix[t+i][r]
-			matrix[t+i][r] = matrix[t][l+i]
+	for tl[0] < bl[0] {
+		// rotate
+		moveBy := (tr[1] - tl[1])
+		for i := 0; i < moveBy; i++ {
+			trTemp := matrix[tr[0]+i][tr[1]]
+			matrix[tr[0]+i][tr[1]] = matrix[tl[0]][tl[1]+i]
 
-			br := matrix[b][r-i]
-			matrix[b][r-i] = tr
+			brTemp := matrix[br[0]][br[1]-i]
+			matrix[br[0]][br[1]-i] = trTemp
 
-			bl := matrix[b-i][l]
-			matrix[b-i][l] = br
+			blTemp := matrix[bl[0]-i][bl[1]]
+			matrix[bl[0]-i][bl[1]] = brTemp
 
-			matrix[t][l+i] = bl
+			matrix[tl[0]][tl[1]+i] = blTemp
 		}
-		t++
-		b--
-		l++
-		r--
+
+		// move pointers in
+		tl[0], tl[1] = tl[0]+1, tl[1]+1
+		tr[0], tr[1] = tr[0]+1, tr[1]-1
+		br[0], br[1] = br[0]-1, br[1]-1
+		bl[0], bl[1] = bl[0]-1, bl[1]+1
 	}
 }
