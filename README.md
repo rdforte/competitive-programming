@@ -52,7 +52,25 @@ that it seemed to be working fine.
 
 We use C++ 17 because LeetCode does not support C++ 20
 
-## Tips
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+# DSA Algorithms and Tips
+
+### Always identify constraints
 
 Always suss out your constraints. Example graph question constraints:
 
@@ -63,12 +81,16 @@ Always suss out your constraints. Example graph question constraints:
 - `0 <= rooms[i][j] < n` the value in the adjacency list is always less than n
 - `All the values of rooms[i] are unique.` each value in the adjacency list for the node is unique
 
+---
+
 ### Stacks
 
 A lot of parsing questions (valid parentheses, braces, parsing math expressions),
 and basically anything where 'future data can impact earlier'.
 Another pattern would be monotonically increasing / decreasing stack questions, where you eliminate all entries greater / less
 than on each iteration.
+
+---
 
 ### Dynamic Programming
 
@@ -126,6 +148,8 @@ Another common scenario for improving space complexity is when the recurence rel
 [nth fibonacci number](LeetCode/Easy/509-fibonacci-number/go/main.go). Because we only care about the previouse 2 fibonacci numbers there is no need to keep an array
 holding all previouse fibonacci numbers.
 
+---
+
 ### Dynamic Programming (Kadane's Algorithm)
 
 Kadane's Algorithm is an algorith that can find the maximum sum subarray when given an array of numbers. Its time complexity is O(n) and space O(1).
@@ -147,10 +171,14 @@ Kadane's Algorithm is an algorith that can find the maximum sum subarray when gi
 
 ![kadanes algorithm](assets/kadanes_algorithm.gif)
 
+---
+
 ### Heaps / Priority Queue
 
 - Good for finding the top **K** elements.
 - Dijkstras algorithm for calculating the shortest path in weighted graphs.
+
+---
 
 ### Sliding Window / 2 pointers
 
@@ -159,10 +187,14 @@ Kadane's Algorithm is an algorith that can find the maximum sum subarray when gi
   Example Leetcode 1004: Given a binary array nums and an integer k, return the maximum number of `consecutive 1's` (consecutive 1's creates a range)
   in the array if you can flip at most k 0's.
 
+---
+
 ### BFS (Breadth First Search)
 
 - Great for finding the shortest path in the graph.
 - Can be used with priority queue to form Dijkstras algorithm to find shortest path in weighted graph
+
+---
 
 ### Binary Search
 
@@ -170,12 +202,16 @@ Although binary search algorithms are typically used to find one element in a so
 You can apply a binary search to a result, for example. Say you wanted to determine the minimum square footage of office space needed to fit all a company's employees easily.
 The square footage is a consecutive number and therefore sorted so we can perform binary search on it
 
+---
+
 ### Floyd's Algorithm
 
 Used for finding the start of a linked list cycle.
 
 - [287 find-the-duplicate-number](https://leetcode.com/problems/find-the-duplicate-number/description/)
 - [Floyd's cycle detection algorithm (Tortoise and hare)](https://www.youtube.com/watch?v=PvrxZaH_eZ4)
+
+---
 
 ### GCD (Greatest Common Divisor) Euclidean algorithm
 
@@ -190,12 +226,16 @@ func gcd(a, b int) int {
 }
 ```
 
+---
+
 ### Tarjan's Algorithm
 
 Used to find the articulation point in a graph. An articulation point is a node that when removed will divide the graph into 2.
 
 - [LeetCode Hard - 1568 minimum number of days to disconnect island](LeetCode/Hard/1568-minimum-number-of-days-to-disconnect-island/go/main.go).
 - [YouTube: Tarjan's Strongly Connected Component (SCC) Algorithm (UPDATED) | Graph Theory](https://www.youtube.com/watch?v=wUgWX0nc4NY)
+
+---
 
 ### Cyclic Arrays.
 
@@ -216,6 +256,98 @@ i, arrLen := 1, 3
 
 - [256 Paint House](LeetCode/Medium/256/go/main.go)
 - [265 Paint House II](LeetCode/Hard/265-paint-house-2/go/main.go) _arrLen varies per input_
+
+---
+
+### Gauss' Formula
+
+Find the sum all numbers up to n in O(1) time.
+For example if I said find the sum of the first 100 numbers you could loop through all the numbers from [1..n]
+to get the sum which would take O(n) time or you could use the below formula:
+
+![Guass Formula](./assets/gaussFormula.png)
+
+```
+n := 100
+sum := n * (n+1) / 2
+```
+
+### Bit Operations
+
+#### AND (&)
+
+Will produce a bit in the same position where x and y have the same bit.
+
+```
+  1 0 1 1 0 (22)
+& 1 1 0 1 0 (26)
+----------------
+  1 0 0 1 0 (18)
+```
+
+Because in Binary even numbers always have their right most bit as 0 we can quickly determine if a number is even by:
+
+```
+x & 1 == 0
+```
+
+and converseley if its odd by (because odd numbers always have their right most bit as 1):
+
+```
+x & 1 == 1
+```
+
+#### OR (|)
+
+Will produce a bit in the same position where one of the bits is 1.
+
+```
+  1 0 1 1 0 (22)
+& 1 1 0 1 0 (26)
+----------------
+  1 1 1 1 0 (30)
+```
+
+#### XOR (^)
+
+Will produce a bit in the same position where both bits are different.
+
+```
+  1 0 1 1 0 (22)
+& 1 1 0 1 0 (26)
+----------------
+  0 1 1 0 0 (12)
+```
+
+An example of this can be found here [LeetCode 268 Missing Number](LeetCode/Easy/268-Missing_Number/go/main.go)
+
+#### NOT (~)
+
+Used to invert the bits. The formula ~x == -x - 1 holds true.
+In Go there is no ~ operator but we can use XOR.
+
+```
+^29 = -30
+
+This holds true to ~x == -x - 1
+```
+
+#### Bit Shift (<<) (>>)
+
+Left bit shift << appends K zero bits to the number and Right bit shift >> removes K zero bits from the number.
+NOTE:
+
+```
+x << k is the same as x * 2^k
+
+x >> k is the same as x / 2^k
+```
+
+---
+
+---
+
+---
 
 ## Achievements
 
