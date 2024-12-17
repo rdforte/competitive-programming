@@ -343,6 +343,17 @@ x << k is the same as x * 2^k
 x >> k is the same as x / 2^k
 ```
 
+### 1e9 + 7
+
+Some questions becasue the number can get really large ask you to mod by 1,000,000,007.
+This is equivalent to 1e9+7.
+1e9 is the same as saying 1 multiplied by 10^9.
+Therefore we can do the following:
+
+```
+answer % (1e9+7)
+```
+
 ---
 
 ---
