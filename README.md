@@ -354,6 +354,30 @@ Therefore we can do the following:
 answer % (1e9+7)
 ```
 
+### Lexicographically smallest/largest string
+
+A string is lexicographically smaller when:
+
+- the first character is smaller despite the length.
+- smaller length when starting characters are the same.
+  example:
+  `a` is lexicographically smaller than `aa`.
+  `abcd` is lexicographically smaller than `b`
+
+A string is lexicographically larger when:
+
+- the first character is larger despite the length.
+- larger length if starting characters are the same.
+  example:
+  `ba` is lexicographically larger than `b`.
+  `b` is lexicographically larger than `abcd`
+
+a great way to compare strings lexicographically in Go is via
+
+```
+strings.Compare(str1, str2)
+```
+
 ---
 
 ---
