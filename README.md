@@ -384,6 +384,8 @@ strings.Compare(str1, str2)
 
 ---
 
+---
+
 ## Achievements
 
 ![100daysbadge](assets/100daysbadge.gif)
