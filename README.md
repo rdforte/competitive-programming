@@ -228,6 +228,24 @@ func gcd(a, b int) int {
 
 ---
 
+### LCM (Least Common Multiple)
+
+The Least Common Multiple of two numbers is the smallest multiple of those 2 numbers for example take LCM(6, 10)
+
+Multiples of 6:
+6, 12, 18, 24, `30`, 36, 42
+
+Multiples of 10:
+10, 20, `30`, 40, 50
+
+Therfore the LCM(6, 10) = 30.
+
+```
+func lcm(a, b int) int {
+	return (a * b) / gcd(a, b)
+}
+```
+
 ### Tarjan's Algorithm
 
 Used to find the articulation point in a graph. An articulation point is a node that when removed will divide the graph into 2.
