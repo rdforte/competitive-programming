@@ -396,6 +396,20 @@ a great way to compare strings lexicographically in Go is via
 strings.Compare(str1, str2)
 ```
 
+### Prefix Sum
+
+the prefix sum, cumulative sum, inclusive scan, or simply scan of a sequence of numbers x0, x1, x2, ... is a
+second sequence of numbers y0, y1, y2, ..., the sums of prefixes (running totals) of the input sequence:
+
+| 0   | 1   | 2   | 3   | 4   | 5   | 6   |
+| --- | --- | --- | --- | --- | --- | --- |
+| 0   | 1   | 3   | 6   | 10  | 15  | 21  |
+
+This is really handy now because if we get a list of ranges for which we have to calculate the sum for ie: the range [3,5] as an example.
+Then we know that at index 5 its ranges [0,2] + [3,5] so the sum of the range [3,5] would be the sum at index 5 (sum 0-5) minus the sum at index 2 (sum 0-2).
+Therefore 15-3 = 12.
+We can then be given a large number of ranges and because we computed the sum in O(n) time then for each range m its a simple O(1) lookup.
+
 ---
 
 ---
