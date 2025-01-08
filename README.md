@@ -186,6 +186,7 @@ Kadane's Algorithm is an algorith that can find the maximum sum subarray when gi
   the answer repeatedly for a set of `ranges` from the array.
   Example Leetcode 1004: Given a binary array nums and an integer k, return the maximum number of `consecutive 1's` (consecutive 1's creates a range)
   in the array if you can flip at most k 0's.
+- Another good candidate for sliding window algorith is **subarray**. Because it is a contiguous and the order matters we can use sliding windown of DP.
 
 ---
 
@@ -398,7 +399,7 @@ strings.Compare(str1, str2)
 
 ### Prefix Sum
 
-Problems that require sequences of elements to meet criteria often utilize prefix sums.
+**Problems that require sequences of elements to meet criteria often utilize prefix sums.**
 
 The prefix sum, cumulative sum, inclusive scan, or simply scan of a sequence of numbers x0, x1, x2, ... is a
 second sequence of numbers y0, y1, y2, ..., the sums of prefixes (running totals) of the input sequence:
@@ -418,7 +419,7 @@ We can then be given a large number of ranges and because we computed the sum in
 | --- | --- | --- | --- |
 | 1   | 3   | 6   | 10  |
 
-By using Prefix Sum we can calculate the total number of contguous sub arrays.
+By using Prefix Sum we can calculate the total number of contiguous sub arrays.
 
 For example if I had the array:
 | 1 | 2 |
