@@ -186,7 +186,12 @@ Kadane's Algorithm is an algorith that can find the maximum sum subarray when gi
   the answer repeatedly for a set of `ranges` from the array.
   Example Leetcode 1004: Given a binary array nums and an integer k, return the maximum number of `consecutive 1's` (consecutive 1's creates a range)
   in the array if you can flip at most k 0's.
-- Another good candidate for sliding window algorith is **subarray**. Because it is a contiguous and the order matters we can use sliding windown of DP.
+- Another good candidate for sliding window algorith is **SUB-ARRAY**. Because it is a contiguous and the order matters we can use sliding windown of DP.
+- Sliding Window is a good candidate for **CONTIGUOUS** elements.
+- Sliding Window also goes hand in hand with a hash map in the case where we want to keep track of the elements in the winddow.
+  ex: [904 Fruits into baskets](LeetCode/Medium/904-fruits-into-baskets/go/main.go).
+- **TIP**: I've found that when the brute force solution looks like a loop within a loop (**NESTED LOOPS**) which results in a n^2 solution, this may be a good candidate for a
+  sliding window.
 
 ---
 
