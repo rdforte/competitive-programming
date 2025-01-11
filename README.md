@@ -192,6 +192,7 @@ Kadane's Algorithm is an algorith that can find the maximum sum subarray when gi
   ex: [904 Fruits into baskets](LeetCode/Medium/904-fruits-into-baskets/go/main.go).
 - **TIP**: I've found that when the brute force solution looks like a loop within a loop (**NESTED LOOPS**) which results in a n^2 solution, this may be a good candidate for a
   sliding window.
+- The term subarray/contiguous elements of length k is equivalent to window of length k.
 
 ---
 

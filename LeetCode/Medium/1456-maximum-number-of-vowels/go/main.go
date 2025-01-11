@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"math"
 )
 
 func main() {
@@ -12,24 +11,21 @@ func main() {
 }
 
 func maxVowels(s string, k int) int {
-	maxVowels := 0
-	currentVowels := 0
+	res, curVowels := 0, 0
 	for l, r := 0, 0; r < len(s); r++ {
-		if r-l >= k {
+		if isVowel(s[r]) {
+			curVowels++
+		}
+		if (r-l)+1 > k {
 			if isVowel(s[l]) {
-				currentVowels--
+				curVowels--
 			}
 			l++
 		}
-
-		if isVowel(s[r]) {
-			currentVowels++
-		}
-
-		maxVowels = int(math.Max(float64(maxVowels), float64(currentVowels)))
+		res = max(res, curVowels)
 	}
 
-	return maxVowels
+	return res
 }
 
 func isVowel(char byte) bool {
