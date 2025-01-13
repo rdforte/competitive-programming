@@ -17,6 +17,13 @@ func main() {
 		{9, -2, -10, 16},
 		{-4, 14, -10, -9},
 	})) // 60
+
+	fmt.Println(maximumAmount([][]int{
+		{-16, 4, 1, -1},
+		{11, 9, 3, 3},
+		{-6, 17, -19, 9},
+		{14, -17, -19, -13},
+	})) // 35
 }
 
 func maximumAmount(coins [][]int) int {
@@ -41,7 +48,7 @@ func maximumAmount(coins [][]int) int {
 		}
 
 		if memo[r][c][neutralised] == math.MinInt64 {
-			sum := 0
+			sum := math.MinInt64
 			if r+1 < len(coins) {
 				sum = dp(r+1, c, neutralised) + coins[r][c]
 			}
