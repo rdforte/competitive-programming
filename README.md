@@ -96,8 +96,11 @@ than on each iteration.
 
 Two common use cases:
 
-- Finding an optimal solution ie: max or min
-- Counting the total number of solutions for a problem
+- Finding an optimal solution ie: max or min.
+- Counting the total number of solutions for a problem.
+
+**NOTE:** That if the question asks for the max/min of something or along those lines and involves consecutive/continguous items in
+a list it may be a sliding window question. In which case refer to sliding window below.
 
 examples may include:
 
