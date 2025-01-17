@@ -353,6 +353,7 @@ An example of this can be found here [LeetCode 268 Missing Number](LeetCode/Easy
 
 #### NOT (~)
 
+The NOT operation ~x produces a number where all bits of x have been inverted.
 Used to invert the bits. The formula ~x == -x - 1 holds true.
 In Go there is no ~ operator but we can use XOR.
 
