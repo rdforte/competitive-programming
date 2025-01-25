@@ -30,66 +30,65 @@ func main() {
 	fmt.Println(exist([][]byte{
 		{'a', 'a'},
 	}, "aaa") == false)
+
+	fmt.Println(exist([][]byte{
+		{'a', 'a', 'b', 'a', 'a', 'b'},
+		{'a', 'a', 'b', 'b', 'b', 'a'},
+		{'a', 'a', 'a', 'a', 'b', 'a'},
+		{'b', 'a', 'b', 'b', 'a', 'b'},
+		{'a', 'b', 'b', 'a', 'b', 'a'},
+		{'b', 'a', 'a', 'a', 'a', 'b'},
+	}, "bbbaabbbbbab") == false)
 }
 
+// Instead of trying to match on the full word, this can lead to a very INEFFICIENT algorithm so
+// instead we can match one letter at a time as we progress throughout the grid. If the letter for that
+// index does not match then we know that this chain of letters can not be a possible word so no need to
+// progress any further and instead return early.
+
 func exist(board [][]byte, word string) bool {
-
-	seen := false
-
-	directions := [][]int{
+	dirs := [][]int{
 		{-1, 0},
 		{1, 0},
 		{0, -1},
 		{0, 1},
 	}
 
-LOOP:
-	for row := 0; row < len(board); row++ {
-		for col := 0; col < len(board[row]); col++ {
-			var dfs func(r, c, i int)
-			dfs = func(r, c, i int) {
-				if seen {
-					return
+	for r := 0; r < len(board); r++ {
+		for c := 0; c < len(board[r]); c++ {
+			var dp func(r, c, i int) bool
+			dp = func(r, c, i int) bool {
+				if i == len(word) {
+					return true
 				}
 
-				if r >= len(board) || r < 0 || c < 0 || c >= len(board[r]) {
-					return
+				if r >= len(board) || r < 0 || c < 0 || c >= len(board[r]) || board[r][c] == '.' {
+					return false
 				}
 
-				if board[r][c] == '#' {
-					return
+				if board[r][c] != word[i] {
+					return false
 				}
 
-				if word[i] != board[r][c] {
-					return
+				char := board[r][c]
+				board[r][c] = '.'
+
+				for _, d := range dirs {
+					if dp(r+d[0], c+d[1], i+1) {
+						return true
+					}
 				}
 
-				if i == len(word)-1 {
-					seen = true
-					return
-				}
+				board[r][c] = char
 
-				cur := board[r][c]
-				board[r][c] = '#'
-
-				for _, dir := range directions {
-					nextR := r + dir[0]
-					nextC := c + dir[1]
-
-					dfs(nextR, nextC, i+1)
-				}
-
-				board[r][c] = cur
-
+				return false
 			}
 
-			dfs(row, col, 0)
-
-			if seen {
-				break LOOP
+			if dp(r, c, 0) {
+				return true
 			}
 		}
 	}
 
-	return seen
+	return false
 }
