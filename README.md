@@ -199,6 +199,11 @@ Kadane's Algorithm is an algorith that can find the maximum sum subarray when gi
   sliding window.
 - The term subarray/contiguous elements of length k is equivalent to window of length k.
 
+(1604. Alert Using Same Key-Card Three or More Times in a One Hour Period)[LeetCode/Medium/1604-alert-using-same-key-card-three-or-more-times-in-a-one-hour-perfiod/]
+is a great sliding window question because it does not appear to be a sliding window question at first glance. This question gave hours and minutes. The question became
+a lot easier once we converted hours and minutes to just minutes so we had a range between 0 - 1439 (23 \* 60 + 59). We could then see if any time was outside the 60 min
+range.
+
 ---
 
 ### BFS (Breadth First Search)
