@@ -22,6 +22,61 @@ func main() {
 		{1, 2},
 		{0, 1},
 	}))
+
+	fmt.Println("TOPOLOGICAL SORT")
+	fmt.Println(canFinishTopologicalSort(2, [][]int{
+		{1, 0},
+	}))
+
+	fmt.Println(canFinishTopologicalSort(2, [][]int{
+		{1, 0},
+		{0, 1},
+	}))
+
+	fmt.Println(canFinishTopologicalSort(3, [][]int{
+		{1, 0},
+		{0, 2},
+		{2, 1},
+	}))
+	fmt.Println(canFinishTopologicalSort(3, [][]int{
+		{1, 0},
+		{1, 2},
+		{0, 1},
+	}))
+}
+
+func canFinishTopologicalSort(numCourses int, prerequisites [][]int) bool {
+	// initialise adjacency list takes O(m) time where m is the edges
+	indegree := make([]int, numCourses)
+	adj := make([][]int, numCourses)
+	for _, p := range prerequisites {
+		indegree[p[0]]++
+		adj[p[1]] = append(adj[p[1]], p[0])
+	}
+
+	var queue []int
+	for i, in := range indegree {
+		if in == 0 {
+			queue = append(queue, i)
+		}
+	}
+
+	visited := 0
+
+	for len(queue) > 0 {
+		n := queue[0]
+		queue = queue[1:]
+		visited++
+
+		for _, edge := range adj[n] {
+			indegree[edge]--
+			if indegree[edge] == 0 {
+				queue = append(queue, edge)
+			}
+		}
+	}
+
+	return visited == numCourses
 }
 
 // time and space = O(m+n)

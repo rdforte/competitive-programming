@@ -220,6 +220,29 @@ range.
 
 ---
 
+### Kahn's Algorithm for Topological Sorting
+
+When selecting courses for the next semester in college, you might have noticed that some advanced courses have prerequisites that require you to take some
+introductory courses first. For example, to take Course C, you need to complete Course B first, and to take Course B, you need to complete Course A first.
+There are many courses that you must complete for an academic degree.
+You do not want to find out in the last semester that you have not completed some prerequisite courses for an advanced course.
+So, how can we arrange the order of the courses adequately while considering these prerequisite relationships between them?
+
+[Course A] --> [Course B] --> [Course C]
+
+“Topological sorting” helps solve the problem.
+**It provides a linear sorting based on the required ordering between vertices in directed acyclic graphs**.
+To be specific, given vertices u and v, to reach vertex v, we must have reached vertex u first.
+In “topological sorting”, u has to appear before v in the ordering.
+The most popular algorithm for “topological sorting” is Kahn’s algorithm.
+
+**NOTE** Kahn's algorith is great for identifying the cycle in a graph
+
+- Great for finding the cycle in a graph
+  [207. Course Schedule](LeetCode/Medium/207-course-schedule/go/main.go)
+
+---
+
 ### Binary Search
 
 Although binary search algorithms are typically used to find one element in a sorted sequence, they have many other uses.
