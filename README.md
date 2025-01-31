@@ -213,6 +213,13 @@ range.
 
 ---
 
+### DFS (Depth First Search)
+
+- Great for finding the cycle in a graph
+  [207. Course Schedule](LeetCode/Medium/207-course-schedule/go/main.go)
+
+---
+
 ### Binary Search
 
 Although binary search algorithms are typically used to find one element in a sorted sequence, they have many other uses.
