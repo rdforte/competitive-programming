@@ -230,6 +230,8 @@ So, how can we arrange the order of the courses adequately while considering the
 
 [Course A] --> [Course B] --> [Course C]
 
+_In order to take course C we need to take course B and to take course B we need to first take course A._
+
 “Topological sorting” helps solve the problem.
 **It provides a linear sorting based on the required ordering between vertices in directed acyclic graphs**.
 To be specific, given vertices u and v, to reach vertex v, we must have reached vertex u first.
