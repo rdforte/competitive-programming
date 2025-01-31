@@ -209,6 +209,7 @@ range.
 ### BFS (Breadth First Search)
 
 - Great for finding the shortest path in the graph.
+- Involves the use of a queue.
 - Can be used with priority queue to form Dijkstras algorithm to find shortest path in weighted graph
 
 ---
@@ -217,6 +218,7 @@ range.
 
 - Great for finding the cycle in a graph
   [207. Course Schedule](LeetCode/Medium/207-course-schedule/go/main.go)
+- Involves the use of a stack or recursion (stack frame).
 
 ---
 
