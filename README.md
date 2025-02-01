@@ -87,7 +87,7 @@ Always suss out your constraints. Example graph question constraints:
 
 A lot of parsing questions (valid parentheses, braces, parsing math expressions),
 and basically anything where 'future data can impact earlier'.
-Another pattern would be monotonically increasing / decreasing stack questions, where you eliminate all entries greater / less
+Another pattern would be monotonically increasing / decreasing stack questions, where you eliminate all entriesgreater / less
 than on each iteration.
 
 ---
@@ -244,6 +244,24 @@ The most popular algorithm for “topological sorting” is Kahn’s algorithm.
 
 - Great for finding the cycle in a graph
   [207. Course Schedule](LeetCode/Medium/207-course-schedule/go/main.go)
+
+---
+
+### Trie - Text Search
+
+A Trie is an effective way to search for words. A good example of how a trie can be very effective in enhancing the performance of our algorithm look at
+(212 Word Search II)[LeetCode/Hard/212-word-search-2/go/main.go].
+
+An example of a TrieNode where we want to find all words is:
+
+```
+type TrieNode struct {
+	children map[byte]*TrieNode
+	words    []string
+}
+```
+
+Note the root nodes character is "" (empty).
 
 ---
 
