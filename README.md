@@ -182,6 +182,7 @@ Kadane's Algorithm is an algorith that can find the maximum sum subarray when gi
 
 - Good for finding the top **K** elements.
 - Dijkstras algorithm for calculating the shortest path in weighted graphs.
+- Good for keeping track of the max/min without having to sort the full list [2043 Stock Price Fluctuation](LeetCode/Medium/2034-stock-price-fluctuation/go/main.go)
 
 ---
 
