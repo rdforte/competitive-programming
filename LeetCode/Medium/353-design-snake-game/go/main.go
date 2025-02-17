@@ -36,13 +36,6 @@ type SnakeGame struct {
 }
 
 func Constructor(width int, height int, food [][]int) SnakeGame {
-	grid := make([][]int, 0, height)
-	for range height {
-		grid = append(grid, make([]int, width))
-	}
-
-	grid[0][0] = 1
-
 	dummyTail := &Body{}
 	dummyHead := &Body{}
 	head := &Body{
