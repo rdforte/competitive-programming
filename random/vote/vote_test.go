@@ -34,6 +34,11 @@ func Test_Vote_SuccessCalculatedVotes(t *testing.T) {
 			votes:     []string{"C", "B", "A"},
 			wantOrder: []string{"C", "B", "A"},
 		},
+		{
+			name:      "should return order A",
+			votes:     []string{"A", "B", "C", "D", "D", "C", "B", "A"},
+			wantOrder: []string{"D", "C", "B", "A"},
+		},
 	}
 
 	for _, tt := range taleTest {
