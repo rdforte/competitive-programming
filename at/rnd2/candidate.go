@@ -20,6 +20,8 @@ func GetResult(ballots [][]string) []string {
 			}
 			ballotResults[candidate][i]++
 			candidateWeights[candidate] += (3 - i)
+			// If all candidates have same weight and ballot results ie: 1st, 2nd 3rd place then
+			// pick the candidate who reached the weight first
 			candidateLastBallotPos[candidate] = (bPos * i) + i
 		}
 	}
