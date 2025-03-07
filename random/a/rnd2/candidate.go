@@ -1,5 +1,4 @@
 /*
-Atlassian rnd2
 * Given a list of ballots where each ballot can contain at most 3 candidates
 * Rank the candidates based on votes. A candidate at pos 1 has a weight 3, candidate at 2 has
 weight 2 and candidate at pos 3 has weight 1

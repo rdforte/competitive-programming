@@ -1,6 +1,3 @@
-/*
-Atlassion rnd1
-*/
 package ratelimiter
 
 import (
