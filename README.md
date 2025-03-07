@@ -432,6 +432,8 @@ x << k is the same as x * 2^k
 x >> k is the same as x / 2^k
 ```
 
+![bitwise properties](./assets/bitwiseProperties.png)
+
 ### 1e9 + 7
 
 Some questions becasue the number can get really large ask you to mod by 1,000,000,007.
@@ -441,6 +443,56 @@ Therefore we can do the following:
 
 ```
 answer % (1e9+7)
+```
+
+### Bases
+
+123.45 in decimal base 10
+
+```
+123.45 = (1 * 10^2) + (2 * 10^1) + (3 * 10^0) + (4 * 10^-1) + (5 * 10^-2)
+```
+
+720.5 in octal base 8. This will also convert the number to base 10.
+
+```
+720.5 = (7 * 8^2) + (2 * 8^1) + (0 * 8^0) + (5 * 8^-1)
+```
+
+Conversion from base-10 (decimal) to base-2 (binary) we divide by 2:
+Convert 50 to base-2.
+
+```
+    50 / 2 = 25; 50 % 2 = 0
+    25 / 2 = 12; 25 % 2 = 1
+    12 / 2 = 6; 12 % 2 = 0
+    6 / 2 = 3; 6 % 2 = 0
+    3 / 2 = 1; 3 % 2 = 1
+    1 / 2 = 0; 1 % 2 = 1
+
+decimal (base-2) = 010011
+```
+
+Convert 0.6875 to base-2 binary.
+Keep multiplying the fractional part until the fractional part becomes 0.
+
+```
+0.6875 * 2 = 1.375 = 1
+0.375 * 2 = 0.75 = 0
+0.75 * 2 = 1.5 = 1
+0.5 * 2 = 1.0 = 1
+
+decima (base-2) = 1011
+```
+
+When converting between different bases the best approach is to convert to base-10 first and then convert to the target base.
+The exception to this is when converting binary to octal or hexadecimal.
+
+```
+101110010 = 101 | 110 | 010 = 562 in octal/base-8 (we group into 3)
+
+
+101110010 = 1 | 0111 | 0010 = 172 in hexadecimal/base-16 (we group into 4)
 ```
 
 ### Lexicographically smallest/largest string
