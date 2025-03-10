@@ -10,9 +10,13 @@ func main() {
 	fmt.Println(findMaxSum([]int{18, 11, 24, 9, 10, 11, 7, 29, 16}, []int{28, 26, 27, 4, 2, 19, 23, 1, 2}, 1))
 	fmt.Println(findMaxSum([]int{4, 2, 1, 5, 3}, []int{10, 20, 30, 40, 50}, 2))
 	fmt.Println(findMaxSum([]int{2, 2, 2, 2}, []int{3, 1, 2, 3}, 1))
-	// fmt.Println(findMaxSum([]int{2, 2, 2, 2, 3}, []int{3, 1, 2, 3, 4}, 1))
-	// fmt.Println(findMaxSum([]int{2, 2, 2, 2, 1}, []int{3, 1, 2, 3, 4}, 1))
 }
+
+/*
+NOTE:
+The trick to this is we are calculating a sum of at most k elements. This gives a hint
+to that it might be a priority queue / heap question.
+*/
 
 func findMaxSum(nums1 []int, nums2 []int, k int) []int64 {
 	pairs := make([][]int, 0, len(nums1)) // idx, weight
