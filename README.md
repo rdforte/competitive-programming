@@ -362,6 +362,9 @@ sum := n * (n+1) / 2
 
 ### Bit Operations
 
+Find Complement of number
+[476. Number Complement](LeetCode/Easy/476-number-complement/go/main.go)
+
 #### AND (&)
 
 Will produce a bit in the same position where x and y have the same bit.
@@ -577,6 +580,21 @@ This can also be calculated simply with the below formula in O(1) time:
 ```math
 n*(n+1) / 2
 ```
+
+### Fenwick Trees / Binary Index Tree
+
+Good for Range based calculations:
+
+[Tutorial](https://www.youtube.com/watch?v=CWDQJGaN1gY)
+
+- Range Sum
+- Range Min/Max
+- Range XOR
+
+- space O(n)
+- search O(log.n)
+- update O(log.n)
+- create/initialise O(n.log.n)
 
 ---
 
