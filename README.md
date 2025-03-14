@@ -585,11 +585,21 @@ n*(n+1) / 2
 
 Good for Range based calculations:
 
+Prefix Sum is good for range based calculations but if we decide to update the values constantly then that means
+we would need to recalculate the Prefix Sum each time the values changed. For this specific situation a Fenwick tree or
+Binary Index Tree becomes very useful as we can search in O(log.n) time and update the values in O(log.n) time.
+
+[Fenwick Tree Implementation](DataStructures/fenwick-tree/go/main.go)
+
 [Tutorial](https://www.youtube.com/watch?v=CWDQJGaN1gY)
+
+Example Use cases
 
 - Range Sum
 - Range Min/Max
 - Range XOR
+
+Space/Time
 
 - space O(n)
 - search O(log.n)
