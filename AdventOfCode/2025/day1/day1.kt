@@ -13,11 +13,11 @@ fun main() {
 }
 
 fun partTwo() {
-        val (list1, list2) = getListsSorted()
+    val (list1, list2) = getListsSorted()
 
     val seen = mutableMapOf<Int, Int>()
 
-   var total = 0
+    var total = 0
     list1.forEach { list1Item ->
         val similarityScore = seen.getOrPut(list1Item) {
             list2.filter { list2Item -> list1Item == list2Item }.sum()
