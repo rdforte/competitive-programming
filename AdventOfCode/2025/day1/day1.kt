@@ -8,13 +8,34 @@ const val basePath = "AdventOfCode/2025/day1"
 const val isExample = false
 
 fun main() {
+    partOne()
+    partTwo()
+}
+
+fun partTwo() {
+        val (list1, list2) = getListsSorted()
+
+    val seen = mutableMapOf<Int, Int>()
+
+   var total = 0
+    list1.forEach { list1Item ->
+        val similarityScore = seen.getOrPut(list1Item) {
+            list2.filter { list2Item -> list1Item == list2Item }.sum()
+        }
+        total += similarityScore
+    }
+
+
+    println("Answer Part Two: $total")
+}
+
+fun partOne() {
     val (list1, list2) = getListsSorted()
 
     var sum = 0
     list1.forEachIndexed { idx, id -> sum += (id - list2[idx]).absoluteValue }
 
-    println("Answer: $sum")
-
+    println("Answer Part One: $sum")
 }
 
 fun getListsSorted(): Pair<List<Int>, List<Int>> {
