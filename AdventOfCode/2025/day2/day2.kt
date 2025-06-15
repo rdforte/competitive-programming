@@ -11,47 +11,38 @@ fun main() {
     partOne()
 }
 
-fun partOne(): Unit {
-    val reports = readInputLines().map { it.split(Regex("\\s")).map { level -> level.toInt() } }
+fun partOne() {
+    val reports = readInputLines().map { it.split(" ").map { level -> level.toInt() } }
 
     var numSafeReports = 0
 
-    outer@ for (report in reports) {
-        if (report.size <= 1) {
+    for (report in reports) {
+        if (isValidReport(report)) {
             numSafeReports++
-            continue
         }
-
-        val isIncreasing = report[1] > report[0]
-
-        if (isIncreasing) {
-            for (i in 1..<report.size) {
-                if (report[i] < report[i - 1]) {
-                    continue@outer
-                }
-
-                if (report[i] - report[i - 1] == 0 || (report[i] - report[i - 1]).absoluteValue > 3) {
-                    continue@outer
-                }
-            }
-        }
-
-        if (!isIncreasing) {
-            for (i in 1..report.size - 1) {
-                if (report[i] > report[i - 1]) {
-                    continue@outer
-                }
-
-                if (report[i] - report[i - 1] == 0 || (report[i] - report[i - 1]).absoluteValue > 3) {
-                    continue@outer
-                }
-            }
-        }
-
-        numSafeReports++
     }
 
     println("Answer Part One: $numSafeReports")
+}
+
+fun isValidReport(report: List<Int>): Boolean {
+    if (report.size <= 1) {
+        return true
+    }
+
+    var isIncreasing = true
+    var isDecreasing = true
+    var rangeLessThanThree = true
+
+    for (i in 1..<report.size) {
+        val before = report[i - 1]
+        val after = report[i]
+        rangeLessThanThree = rangeLessThanThree && (after - before).absoluteValue <= 3
+        isIncreasing = isIncreasing && after > before
+        isDecreasing = isDecreasing && after < before
+    }
+
+    return rangeLessThanThree && (isDecreasing || isIncreasing)
 }
 
 fun readInputLines(): List<String> {
