@@ -1,11 +1,12 @@
 package day2
 
+import utils.readInputLines
 import kotlin.io.path.Path
 import kotlin.io.path.readLines
 import kotlin.math.absoluteValue
 
-const val basePath = "AdventOfCode/2025/day2"
 const val isExample = false
+const val day = 2
 
 /*
 * LEARNINGS:
@@ -21,7 +22,7 @@ fun main() {
 }
 
 fun partTwo() {
-    val reports = readInputLines().map { it.split(" ").map { level -> level.toInt() } }
+    val reports = readInputLines(day, isExample).map { it.split(" ").map { level -> level.toInt() } }
 
     var numSafeReports = 0
 
@@ -51,7 +52,7 @@ fun isValidReport2(report: List<Int>): Boolean {
 }
 
 fun partOne() {
-    val reports = readInputLines().map { it.split(" ").map { level -> level.toInt() } }
+    val reports = readInputLines(day, isExample).map { it.split(" ").map { level -> level.toInt() } }
 
     var numSafeReports = 0
 
@@ -82,10 +83,4 @@ fun isValidReport(report: List<Int>): Boolean {
     }
 
     return rangeLessThanThree && (isDecreasing || isIncreasing)
-}
-
-fun readInputLines(): List<String> {
-    val fileName = if (isExample) "$basePath/inputExample.txt" else "$basePath/input.txt"
-    val path = Path(fileName)
-    return path.readLines()
 }

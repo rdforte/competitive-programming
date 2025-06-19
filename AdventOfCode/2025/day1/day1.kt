@@ -1,11 +1,10 @@
 package day1
 
-import kotlin.io.path.Path
-import kotlin.io.path.readLines
+import utils.readInputLines
 import kotlin.math.absoluteValue
 
-const val basePath = "AdventOfCode/2025/day1"
 const val isExample = false
+const val day = 1
 
 fun main() {
     partOne()
@@ -42,7 +41,7 @@ fun getListsSorted(): Pair<List<Int>, List<Int>> {
     val list1 = mutableListOf<Int>()
     val list2 = mutableListOf<Int>()
 
-    val lines = readInputLines(isExample)
+    val lines = readInputLines(day, isExample)
     lines.forEach {
         val (id1, id2) = it.split(Regex("\\s+"))
         list1 += id1.toInt()
@@ -50,10 +49,4 @@ fun getListsSorted(): Pair<List<Int>, List<Int>> {
     }
 
     return Pair(list1.sorted(), list2.sorted())
-}
-
-fun readInputLines(isExample: Boolean): List<String> {
-    val fileName = if (isExample) "$basePath/inputExample.txt" else "$basePath/input.txt"
-    val path = Path(fileName)
-    return path.readLines()
 }
