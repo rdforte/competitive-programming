@@ -1,12 +1,12 @@
 package day4
 
-import day2.isExample
 import utils.readInputLines
 
 private const val IS_EXAMPLE = false
 
 fun main() {
     part1()
+    part2()
 }
 
 fun part1() {
@@ -27,7 +27,7 @@ fun part1() {
     val directions =
         listOf(
             Pair(-1, 0), // Up
-            Pair(-1, -1), // Diagonal Right UP
+            Pair(-1, 1), // Diagonal Right UP
             Pair(0, 1), // Right
             Pair(1, 1), // Diagonal Right Down
             Pair(1, 0), // Down
@@ -70,5 +70,31 @@ fun part1() {
         }
     }
 
-    println(count)
+    println("PART ONE ANSWER: $count")
+}
+
+fun part2() {
+    val rows = readInputLines(day = 4, isExample = IS_EXAMPLE)
+
+    var count = 0
+
+    for (rowIdx in 1 until rows.lastIndex) {
+        for (colIdx in 1 until rows[rowIdx].lastIndex) {
+            val char = rows[rowIdx][colIdx]
+            if (char == 'A') {
+                val diagonalTLToBR =
+                    (rows[rowIdx - 1][colIdx - 1] == 'M' && rows[rowIdx + 1][colIdx + 1] == 'S') ||
+                        (rows[rowIdx - 1][colIdx - 1] == 'S' && rows[rowIdx + 1][colIdx + 1] == 'M')
+                val diagonalTRToBL =
+                    (rows[rowIdx - 1][colIdx + 1] == 'M' && rows[rowIdx + 1][colIdx - 1] == 'S') ||
+                        (rows[rowIdx - 1][colIdx + 1] == 'S' && rows[rowIdx + 1][colIdx - 1] == 'M')
+
+                if (diagonalTRToBL && diagonalTLToBR) {
+                    count++
+                }
+            }
+        }
+    }
+
+    println("PART TWO ANSWER: $count")
 }
