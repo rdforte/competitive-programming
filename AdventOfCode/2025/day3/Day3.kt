@@ -2,15 +2,15 @@ package day3
 
 import utils.readInputLines
 
-const val isExample = false
-const val day = 3
+const val IS_EXAMPLE = false
+const val DAY = 3
 
-const val dontMul = "don't()"
-const val doMul = "do()"
+const val DONT_MUL = "don't()"
+const val DO_MUL = "do()"
 
-const val mulRgx = """mul\((\d+),(\d+)\)"""
-const val dontRgx = """don't\(\)"""
-const val doRgx = """do\(\)"""
+const val MUL_RGX = """mul\((\d+),(\d+)\)"""
+const val DONT_RGX = """don't\(\)"""
+const val DO_RGX = """do\(\)"""
 
 /*
 * LEARNINGS:
@@ -26,20 +26,20 @@ fun main() {
     partTwo()
 }
 
-
 fun partTwo() {
-    val line = readInputLines(day, isExample)
+    val line = readInputLines(DAY, IS_EXAMPLE)
 
     var shouldInclude = true
     var res = 0
     line.forEach { line ->
-        "$mulRgx|$dontRgx|$doRgx".toRegex().findAll(line).forEach {
+        "$MUL_RGX|$DONT_RGX|$DO_RGX".toRegex().findAll(line).forEach {
             when (it.value) {
-                doMul -> shouldInclude = true
-                dontMul -> shouldInclude = false
-                else -> if (shouldInclude) {
-                    res += it.multiplyNumbers()
-                }
+                DO_MUL -> shouldInclude = true
+                DONT_MUL -> shouldInclude = false
+                else ->
+                    if (shouldInclude) {
+                        res += it.multiplyNumbers()
+                    }
             }
         }
     }
@@ -48,13 +48,14 @@ fun partTwo() {
 }
 
 fun partOne() {
-    val line = readInputLines(day, isExample)
+    val line = readInputLines(DAY, IS_EXAMPLE)
 
     var res = 0
     line.forEach { line ->
-        res += mulRgx.toRegex().findAll(line).sumOf {
-            it.multiplyNumbers()
-        }
+        res +=
+            MUL_RGX.toRegex().findAll(line).sumOf {
+                it.multiplyNumbers()
+            }
     }
 
     println("Answer Part One: $res")

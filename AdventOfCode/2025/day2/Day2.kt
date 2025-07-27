@@ -1,8 +1,6 @@
 package day2
 
 import utils.readInputLines
-import kotlin.io.path.Path
-import kotlin.io.path.readLines
 import kotlin.math.absoluteValue
 
 const val isExample = false
