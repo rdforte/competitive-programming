@@ -4,6 +4,12 @@
 
 Contains my answers to problems solved on variouse competitive programming sites
 
+### Golang documentation
+
+```
+godoc -http localhost:6060
+```
+
 ### [Code Template](./CODE_TEMPLATES.md)
 
 ### Setting up C++ in VSCode
