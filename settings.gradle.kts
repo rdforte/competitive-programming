@@ -1,3 +1,3 @@
 rootProject.name = "competitive-programming"
 
-include("AdventOfCode")
+include("AdventOfCode", "kotlincoroutines")
